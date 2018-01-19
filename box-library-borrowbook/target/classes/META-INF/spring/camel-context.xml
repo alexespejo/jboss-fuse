@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- JBoss, Home of Professional Open Source Copyright 2014, Red Hat, Inc. 
+	and/or its affiliates, and individual contributors by the @authors tag. See 
+	the copyright.txt in the distribution for a full listing of individual contributors. 
+	Licensed under the Apache License, Version 2.0 (the "License"); you may not 
+	use this file except in compliance with the License. You may obtain a copy 
+	of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required 
+	by applicable law or agreed to in writing, software distributed under the 
+	License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS 
+	OF ANY KIND, either express or implied. See the License for the specific 
+	language governing permissions and limitations under the License. -->
+<!-- Configures the Camel Context -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:cxf="http://camel.apache.org/schema/cxf"
+    xmlns:jaxrs="http://cxf.apache.org/jaxrs"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans           http://www.springframework.org/schema/beans/spring-beans.xsd                  http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd          http://camel.apache.org/schema/cxf          http://camel.apache.org/schema/cxf/camel-cxf.xsd          http://cxf.apache.org/jaxrs           http://cxf.apache.org/schemas/jaxrs.xsd">
+    <cxf:rsServer address="http://localhost:40000/box/library/borrow"
+        id="borrowBookService" serviceClass="org.box.fuse.library.LibraryUtility"/>
+    <bean
+        class="org.springframework.jdbc.datasource.SimpleDriverDataSource" id="odsCommonsDS">
+        <property name="driverClass" value="oracle.jdbc.driver.OracleDriver"/>
+        <property name="url" value="jdbc:oracle:thin:@(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=172.25.139.178)(PORT=1521))(ADDRESS=(PROTOCOL=TCP)(HOST=172.25.139.178)(PORT=1521))(LOAD_BALANCE=yes)(FAILOVER=yes)(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=XE)))"/>
+        <property name="username" value="ihsan"/>
+        <property name="password" value="1234567890"/>
+    </bean>
+    <bean class="org.apache.activemq.camel.component.ActiveMQComponent" id="activemq">
+        <property name="brokerURL" value="tcp://localhost:61616"/>
+        <property name="userName" value="admin"/>
+        <property name="password" value="admin"/>
+        <property name="usePooledConnection" value="false"/>
+    </bean>
+    <bean class="org.box.fuse.library.BorrowProcessor" id="borrowProcessor"/>
+    <camelContext id="_camelContext1" xmlns="http://camel.apache.org/schema/spring">
+        <route id="_route1">
+            <from id="_from1" uri="cxfrs://bean://borrowBookService"/>
+            <log id="_log1" message="processing borrow books with username = ${body[0]} and bookid = ${body[1]}"/>
+            <process id="_process1" ref="borrowProcessor"/>
+            <to id="_to1" uri="activemq:queue:mw.box.library.queue?disableReplyTo=true&amp;jmsMessageType=Map"/>
+            <setBody id="_setBody1">
+                <simple>done</simple>
+            </setBody>
+        </route>
+    </camelContext>
+</beans>

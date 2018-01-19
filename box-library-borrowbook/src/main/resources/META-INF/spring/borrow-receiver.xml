@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:camel="http://camel.apache.org/schema/spring"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd        http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+    <camelContext id="camelContext-3331ca8d-21df-4888-a786-aa88d31947ac"
+        trace="false" xmlns="http://camel.apache.org/schema/spring">
+        <route id="_route3">
+            <from id="_from1" uri="activemq:queue:mw.box.library.queue?jmsMessageType=Map"/>
+            <log id="_log1" message="synchronizing borrow book for username: ${body[username]} and bookid ${body[bookid]}"/>
+            <transacted id="_transacted1">
+                <to id="_to1" uri="sql:insert into lib_borrowed_book(id, username, bookid, borroweddate) values(:#${random(1,32767)},:#${body[username]}, :#${body[bookid]}, to_date(:#${date:now:yyyy-MM-dd}, 'yyyy-MM-dd'))?dataSource=odsCommonsDS"/>
+                <to id="_to2" uri="sql:update lib_book set stock = (select stock from lib_book where id = :#${body[bookid]}) - 1 where id = :#${body[bookid]}?dataSource=odsCommonsDS"/>
+            </transacted>
+        </route>
+    </camelContext>
+</beans>

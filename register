@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://fuse.box.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="Registration" targetNamespace="http://fuse.box.org/">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://fuse.box.org/" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://fuse.box.org/">
+  <xs:complexType name="member">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="username" type="xs:string"/>
+      <xs:element minOccurs="0" name="firstname" type="xs:string"/>
+      <xs:element minOccurs="0" name="lastname" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="unregister" type="unregister"/>
+  <xs:complexType name="unregister">
+    <xs:sequence>
+      <xs:element form="qualified" minOccurs="0" name="arg0" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="unregisterResponse" type="unregisterResponse"/>
+  <xs:complexType name="unregisterResponse">
+    <xs:sequence>
+      <xs:element form="qualified" minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="register" type="register"/>
+  <xs:complexType name="register">
+    <xs:sequence>
+      <xs:element form="qualified" minOccurs="0" name="arg0" type="member"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="registerResponse" type="registerResponse"/>
+  <xs:complexType name="registerResponse">
+    <xs:sequence>
+      <xs:element form="qualified" minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="unregisterResponse">
+    <wsdl:part element="tns:unregisterResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="registerResponse">
+    <wsdl:part element="tns:registerResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="unregister">
+    <wsdl:part element="tns:unregister" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="register">
+    <wsdl:part element="tns:register" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="RegistrationPortType">
+    <wsdl:operation name="unregister">
+      <wsdl:input message="tns:unregister" name="unregister">
+    </wsdl:input>
+      <wsdl:output message="tns:unregisterResponse" name="unregisterResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="register">
+      <wsdl:input message="tns:register" name="register">
+    </wsdl:input>
+      <wsdl:output message="tns:registerResponse" name="registerResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="RegistrationSoapBinding" type="tns:RegistrationPortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="unregister">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="unregister">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="unregisterResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="register">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="register">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="registerResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Registration">
+    <wsdl:port binding="tns:RegistrationSoapBinding" name="RegistrationPort">
+      <soap:address location="http://localhost:40000/box/library/register"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
