@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-Bnd-LastModified: 1516342356392
+Bnd-LastModified: 1516606949609
 Build-Jdk: 1.8.0_144
 Built-By: ihsan
 Bundle-Description: List all books that are available in the library

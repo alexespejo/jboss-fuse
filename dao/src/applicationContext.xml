@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<beans xmlns="http://www.springframework.org/schema/beans"   
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"   
+    xmlns:tx="http://www.springframework.org/schema/tx"   
+    xsi:schemaLocation="http://www.springframework.org/schema/beans   
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd   
+    http://www.springframework.org/schema/tx  
+    http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">  
+      
+     <tx:annotation-driven transaction-manager="jpaTxnManagerBean" proxy-target-class="true"/>  
+     <bean
+        class="org.springframework.jdbc.datasource.DriverManagerDataSource" id="dataSourceBean">
+        <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"></property>  
+         <property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"></property>  
+        <property name="username" value="ihsan"/>
+        <property name="password" value="1234567890"/>
+    </bean>
+    <bean
+        class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" id="hbAdapterBean">
+        <property name="showSql" value="true"/>
+        <property name="generateDdl" value="true"/>
+        <property name="databasePlatform" value="org.hibernate.dialect.OracleDialect"/>
+    </bean>
+    <bean
+        class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean" id="emfBean">
+        <property name="dataSource" ref="dataSourceBean"/>
+        <property name="jpaVendorAdapter" ref="hbAdapterBean"/>
+    </bean>
+    <bean class="org.springframework.orm.jpa.JpaTemplate" id="jpaTemplateBean">
+        <property name="entityManagerFactory" ref="emfBean"/>
+    </bean>
+    <bean class="com.javatpoint.MemberDao" id="memberDaoBean">
+        <property name="template" ref="jpaTemplateBean"/>
+    </bean>
+    <bean class="org.springframework.orm.jpa.JpaTransactionManager" id="jpaTxnManagerBean">
+        <property name="entityManagerFactory" ref="emfBean"/>
+    </bean>   
+</beans>

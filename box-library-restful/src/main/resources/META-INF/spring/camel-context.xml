@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- JBoss, Home of Professional Open Source Copyright 2014, Red Hat, Inc. 
+	and/or its affiliates, and individual contributors by the @authors tag. See 
+	the copyright.txt in the distribution for a full listing of individual contributors. 
+	Licensed under the Apache License, Version 2.0 (the "License"); you may not 
+	use this file except in compliance with the License. You may obtain a copy 
+	of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required 
+	by applicable law or agreed to in writing, software distributed under the 
+	License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS 
+	OF ANY KIND, either express or implied. See the License for the specific 
+	language governing permissions and limitations under the License. -->
+<!-- Configures the Camel Context -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:cxf="http://camel.apache.org/schema/cxf"
+    xmlns:jaxrs="http://cxf.apache.org/jaxrs"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd                    http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd                     http://camel.apache.org/schema/cxf http://camel.apache.org/schema/cxf/camel-cxf.xsd                     http://cxf.apache.org/jaxrs http://cxf.apache.org/schemas/jaxrs.xsd  http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd">
+    <cxf:rsServer address="http://localhost:40000/box/library/member"
+        id="MemberService" serviceClass="org.box.fuse.library.MemberService"/>
+    <!-- Configuration for ORM Spring -->
+    <tx:annotation-driven proxy-target-class="true" transaction-manager="jpaTxnManagerBean"/>
+    <bean
+        class="org.springframework.jdbc.datasource.DriverManagerDataSource" id="dataSourceBean">
+        <property name="driverClass" value="oracle.jdbc.driver.OracleDriver"/>
+        <property name="url" value="jdbc:oracle:thin:@(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=172.25.139.178)(PORT=1521))(ADDRESS=(PROTOCOL=TCP)(HOST=172.25.139.178)(PORT=1521))(LOAD_BALANCE=yes)(FAILOVER=yes)(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=XE)))"/>
+        <property name="username" value="ihsan"/>
+        <property name="password" value="1234567890"/>
+    </bean>
+    <bean
+        class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" id="hbAdapterBean">
+        <property name="showSql" value="true"/>
+        <property name="generateDdl" value="true"/>
+        <property name="databasePlatform" value="org.hibernate.dialect.OracleDialect"/>
+    </bean>
+    <bean
+        class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean" id="emfBean">
+        <property name="dataSource" ref="dataSourceBean"/>
+        <property name="jpaVendorAdapter" ref="hbAdapterBean"/>
+    </bean>
+    <bean class="org.springframework.orm.jpa.JpaTemplate" id="jpaTemplateBean">
+        <property name="entityManagerFactory" ref="emfBean"/>
+    </bean>
+    <bean class="org.box.fuse.library.model" id="memberDaoBean">
+        <property name="template" ref="jpaTemplateBean"/>
+    </bean>
+    <bean class="org.springframework.orm.jpa.JpaTransactionManager" id="jpaTxnManagerBean">
+        <property name="entityManagerFactory" ref="emfBean"/>
+    </bean>
+    
+    <bean class="org.box.fuse.library.MemberServiceProcessor" id="bookProcessor"/>
+    <camelContext id="_camelContext1" xmlns="http://camel.apache.org/schema/spring">
+        <route id="_route1">
+            <from id="_from1" uri="cxfrs://bean://MemberService"/>
+            <process id="_process1" ref="MemberService"/>
+        </route>
+    </camelContext>
+</beans>

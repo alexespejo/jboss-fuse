@@ -52,5 +52,13 @@
                 <simple>${body[0]} sucessfully unregistered</simple>
             </setBody>
         </route>
+        <route id="_addbook">
+            <from id="_from4" uri="direct:addbook"/>
+            <log id="_log3" message="adding book data,id: ${body[0].id} title: ${body[0].title}, author: ${body[0].author}, stock: ${body[0].stock}"/>
+            <to id="_to3" uri="sql:insert into lib_book(id,title, author, stock) values(:#${body[0].id},:#${body[0].title}, :#${body[0].author}, :#${body[0].stock})?dataSource=odsCommonsDS"/>
+            <setBody id="_setBody3">
+                <simple>${body[0].title} sucessfully adding book</simple>
+            </setBody>
+        </route>
     </camelContext>
 </beans>

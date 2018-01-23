@@ -1,0 +1,19 @@
+<entity-mappings version="1.0"
+	xmlns="http://java.sun.com/xml/ns/persistence/orm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm   
+            http://java.sun.com/xml/ns/persistence/orm_1_0.xsd ">
+	<entity class="org.box.fuse.library.model.member">
+		<table name="lib_member"></table>
+		<attributes>
+			<id name="username">
+				<column name="USERNAME" />
+			</id>
+			<basic name="firstname">
+				<column name="FIRSTNAME" />
+			</basic>
+			<basic name="lastname">
+				<column name="LASTNAME" />
+			</basic>
+		</attributes>
+	</entity>
+</entity-mappings>  
