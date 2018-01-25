@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<con:soapui-project id="16f978bf-e2dd-47a0-aa47-b13f220fd421" activeEnvironment="Default" name="register-add-book" soapui-version="5.2.1" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="dd5276f7-2772-4137-9f7a-614c89c98f50" wsaVersion="NONE" name="RegistrationSoapBinding" type="wsdl" bindingName="{http://fuse.box.org/}RegistrationSoapBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:40000/box/library/register?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:40000/box/library/register?wsdl"><con:part><con:url>http://localhost:40000/box/library/register?wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="Registration" targetNamespace="http://fuse.box.org/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://fuse.box.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http">
+<con:soapui-project id="16f978bf-e2dd-47a0-aa47-b13f220fd421" activeEnvironment="Default" name="register-add-book" soapui-version="5.2.1" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="dd5276f7-2772-4137-9f7a-614c89c98f50" wsaVersion="NONE" name="RegistrationSoapBinding" type="wsdl" bindingName="{http://fuse.box.org/}RegistrationSoapBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:40000/box/library/blueprint/register?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:40000/box/library/blueprint/register?wsdl"><con:part><con:url>http://localhost:40000/box/library/blueprint/register?wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="Registration" targetNamespace="http://fuse.box.org/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://fuse.box.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http">
   <wsdl:types>
     <xs:schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://fuse.box.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://fuse.box.org/">
-      <xs:complexType name="addbook">
+      <xs:complexType name="book">
         <xs:sequence>
           <xs:element minOccurs="0" name="author" type="xs:string"/>
+          <xs:element name="id" type="xs:int"/>
           <xs:element minOccurs="0" name="stock" type="xs:string"/>
           <xs:element minOccurs="0" name="title" type="xs:string"/>
         </xs:sequence>
@@ -19,7 +20,7 @@
       <xs:element name="addbook" type="addbook"/>
       <xs:complexType name="addbook">
         <xs:sequence>
-          <xs:element form="qualified" minOccurs="0" name="arg0" type="addbook"/>
+          <xs:element form="qualified" minOccurs="0" name="arg0" type="book"/>
         </xs:sequence>
       </xs:complexType>
       <xs:element name="addbookResponse" type="addbookResponse"/>
@@ -118,10 +119,10 @@
   </wsdl:binding>
   <wsdl:service name="Registration">
     <wsdl:port binding="tns:RegistrationSoapBinding" name="RegistrationPort">
-      <soap:address location="http://localhost:40000/box/library/register"/>
+      <soap:address location="http://localhost:40000/box/library/blueprint/register"/>
     </wsdl:port>
   </wsdl:service>
-</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:40000/box/library/register</con:endpoint></con:endpoints><con:operation id="ac42d379-48b3-4d6a-9320-f800a71f3533" isOneWay="false" action="" name="addbook" bindingOperationName="addbook" type="Request-Response" outputName="addbookResponse" inputName="addbook" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="c44d07a7-604a-4494-aa24-c2dc16aa2df9" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:40000/box/library/register</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:fuse="http://fuse.box.org/">
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:40000/box/library/blueprint/register</con:endpoint><con:endpoint>http://localhost:40000/box/library/register</con:endpoint></con:endpoints><con:operation id="ac42d379-48b3-4d6a-9320-f800a71f3533" isOneWay="false" action="" name="addbook" bindingOperationName="addbook" type="Request-Response" outputName="addbookResponse" inputName="addbook" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="c44d07a7-604a-4494-aa24-c2dc16aa2df9" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:40000/box/library/blueprint/register</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:fuse="http://fuse.box.org/">
    <soapenv:Header/>
    <soapenv:Body>
       <fuse:addbook>
@@ -136,7 +137,23 @@
          </fuse:arg0>
       </fuse:addbook>
    </soapenv:Body>
-</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://fuse.box.org/RegistrationPortType/addbook"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="a28499b1-6391-4a54-9620-7bcfe2707ce9" isOneWay="false" action="" name="register" bindingOperationName="register" type="Request-Response" outputName="registerResponse" inputName="register" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="e81f6b3b-4a9d-4e5f-8faf-9ec3f77ab555" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:40000/box/library/register</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:fuse="http://fuse.box.org/">
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://fuse.box.org/RegistrationPortType/addbook"/><con:wsrmConfig version="1.2"/></con:call><con:call id="e33e7219-2ce2-492d-984c-c69b87dfe377" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:40000/box/library/blueprint/register</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:fuse="http://fuse.box.org/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <fuse:addbook>
+         <!--Optional:-->
+         <fuse:arg0>
+            <!--Optional:-->
+            <author>?</author>
+            <id>?</id>
+            <!--Optional:-->
+            <stock>?</stock>
+            <!--Optional:-->
+            <title>?</title>
+         </fuse:arg0>
+      </fuse:addbook>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://fuse.box.org/RegistrationPortType/addbook"/></con:call></con:operation><con:operation id="a28499b1-6391-4a54-9620-7bcfe2707ce9" isOneWay="false" action="" name="register" bindingOperationName="register" type="Request-Response" outputName="registerResponse" inputName="register" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="e81f6b3b-4a9d-4e5f-8faf-9ec3f77ab555" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:40000/box/library/blueprint/register</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:fuse="http://fuse.box.org/">
    <soapenv:Header/>
    <soapenv:Body>
       <fuse:register>
@@ -151,7 +168,30 @@
          </fuse:arg0>
       </fuse:register>
    </soapenv:Body>
-</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://fuse.box.org/RegistrationPortType/register"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="334fb96c-095b-45aa-bdc4-5950abf15902" isOneWay="false" action="" name="unregister" bindingOperationName="unregister" type="Request-Response" outputName="unregisterResponse" inputName="unregister" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="81c88dd6-25c4-471d-b001-0d3882a71077" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:40000/box/library/register</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:fuse="http://fuse.box.org/">
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://fuse.box.org/RegistrationPortType/register"/><con:wsrmConfig version="1.2"/></con:call><con:call id="647054d8-64c6-4e7b-9527-b91aa747f9b8" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:40000/box/library/blueprint/register</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:fuse="http://fuse.box.org/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <fuse:register>
+         <!--Optional:-->
+         <fuse:arg0>
+            <!--Optional:-->
+            <firstname>?</firstname>
+            <!--Optional:-->
+            <lastname>?</lastname>
+            <!--Optional:-->
+            <username>?</username>
+         </fuse:arg0>
+      </fuse:register>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://fuse.box.org/RegistrationPortType/register"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="334fb96c-095b-45aa-bdc4-5950abf15902" isOneWay="false" action="" name="unregister" bindingOperationName="unregister" type="Request-Response" outputName="unregisterResponse" inputName="unregister" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="81c88dd6-25c4-471d-b001-0d3882a71077" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:40000/box/library/blueprint/register</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:fuse="http://fuse.box.org/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <fuse:unregister>
+         <!--Optional:-->
+         <fuse:arg0>?</fuse:arg0>
+      </fuse:unregister>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://fuse.box.org/RegistrationPortType/unregister"/><con:wsrmConfig version="1.2"/></con:call><con:call id="5b72c793-e00b-4a8e-92d1-39e764237da8" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:40000/box/library/blueprint/register</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:fuse="http://fuse.box.org/">
    <soapenv:Header/>
    <soapenv:Body>
       <fuse:unregister>
