@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<order>
+	<customer>
+		<name>Hellabrunn Garden</name>
+		<city>Munich</city>
+		<country>Germany</country>
+	</customer>
+	<orderline>
+		<animal>pinguin</animal>
+		<quantity>18</quantity>
+		<maxAllowed>20</maxAllowed>
+	</orderline>
+</order>

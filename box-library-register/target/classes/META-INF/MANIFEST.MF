@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-Bnd-LastModified: 1516785460754
+Bnd-LastModified: 1516854287469
 Build-Jdk: 1.8.0_144
 Built-By: ihsan
 Bundle-Description: box library registration

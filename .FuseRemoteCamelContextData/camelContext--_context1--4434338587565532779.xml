@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<routes xmlns="http://camel.apache.org/schema/spring" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <route customId="true" id="_route1" shutdownRoute="Default">
+        <from customId="true" id="_from1" uri="file:src/data?noop=true"/>
+        <choice customId="true" id="_choice1">
+            <when customId="true" id="_when1">
+                <xpath>/order/orderline/quantity/text() &gt; /order/orderline/maxAllowed/text()</xpath>
+                <log customId="true" id="_log1" message="quantity requested exceeds the maximum allowed - contact customer"/>
+                <setHeader customId="true" headerName="Destination" id="_setHeader1">
+                    <constant>InvalidOrders</constant>
+                </setHeader>
+                <to customId="true" id="_Invalid" uri="file:target/messages/invalidOrders"/>
+            </when>
+            <otherwise customId="true" id="_else2">
+                <log customId="true" id="_log2" message="valid order - process"/>
+                <setHeader customId="true" headerName="Destionation" id="_setHeader2">
+                    <constant>Dispatcher</constant>
+                </setHeader>
+                <to customId="true" id="_Fulfill" uri="direct:OrderFulfillment"/>
+            </otherwise>
+        </choice>
+    </route>
+    <route customId="true" id="_route2">
+        <from customId="true" id="_direct:OrderFulfillment" uri="direct:OrderFulfillment"/>
+        <choice customId="true" id="_choice2">
+            <when customId="true" id="_when/usa">
+                <xpath>/order/customer/country = 'USA'</xpath>
+                <setHeader customId="true" headerName="Destination" id="_setHead_usa">
+                    <constant>USA</constant>
+                </setHeader>
+                <log customId="true" id="_usa" message="Valid order - ship to USA customer"/>
+                <to customId="true" id="_US" uri="file:target/messages/USA"/>
+            </when>
+            <when customId="true" id="_when/gb">
+                <xpath>/order/customer/country = 'Great Britain'</xpath>
+                <setHeader customId="true" headerName="Destination" id="_setHead_uk">
+                    <constant>UK</constant>
+                </setHeader>
+                <log customId="true" id="_uk" message="Valid order - ship animals to UK customer"/>
+                <to customId="true" id="_UK" uri="file:target/messages/GreatBritain"/>
+            </when>
+            <when customId="true" id="_when/ger">
+                <xpath>/order/customer/country = 'Germany'</xpath>
+                <setHeader customId="true" headerName="Destination" id="_setHead_ger">
+                    <constant>Germany</constant>
+                </setHeader>
+                <log customId="true" id="_ger" message="Valid order - ship to Germany customer"/>
+                <to customId="true" id="_GER" uri="file:target/messages/Germany"/>
+            </when>
+            <otherwise customId="true" id="_else/fr">
+                <setHeader customId="true" headerName="Destination" id="_setHead_fr">
+                    <constant>France</constant>
+                </setHeader>
+                <log customId="true" id="_fr" message="Valid order - ship animals to France customer"/>
+                <to customId="true" id="_FR" uri="file:target/messages/France"/>
+            </otherwise>
+        </choice>
+    </route>
+</routes>

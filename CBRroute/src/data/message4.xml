@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<order>
+	<customer>
+		<name>Bristol Zoo</name>
+		<city>Bristol</city>
+		<country>Great Britanian</country>
+	</customer>
+	<orderline>
+		<animal>emu</animal>
+		<quantity>5</quantity>
+		<maxAllowed>4</maxAllowed>
+	</orderline>
+</order>
