@@ -1,8 +1,8 @@
 package org.box.fuse.model;
 
 public class Member {
-	private String username,firstname,lastname;
-	
+	private String username, firstname, lastname;
+
 	public Member() {
 		super();
 		// TODO Auto-generated constructor stub

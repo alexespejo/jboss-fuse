@@ -17,16 +17,7 @@
 <blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
 	xmlns:cxf="http://camel.apache.org/schema/blueprint/cxf" xmlns:jaxws="http://cxf.apache.org/blueprint/jaxws"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0      
-    https://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd      
-    http://camel.apache.org/schema/blueprint      
-    http://camel.apache.org/schema/blueprint/camel-blueprint.xsd     
-    http://camel.apache.org/schema/blueprint/cxf      
-    http://camel.apache.org/schema/blueprint/cxf/camel-cxf.xsd      
-    http://cxf.apache.org/blueprint/core      
-    http://cxf.apache.org/schemas/blueprint/core.xsd            
-    http://cxf.apache.org/blueprint/jaxws      
-    http://cxf.apache.org/schemas/blueprint/jaxws.xsd">
+	xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0           https://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd           http://camel.apache.org/schema/blueprint           http://camel.apache.org/schema/blueprint/camel-blueprint.xsd          http://camel.apache.org/schema/blueprint/cxf           http://camel.apache.org/schema/blueprint/cxf/camel-cxf.xsd           http://cxf.apache.org/blueprint/core           http://cxf.apache.org/schemas/blueprint/core.xsd                 http://cxf.apache.org/blueprint/jaxws           http://cxf.apache.org/schemas/blueprint/jaxws.xsd">
 	<!-- Adding a <cxf:bus/> definition to the Blueprint XML file is optional: 
 		it is only required if you want to specify some additional configuration 
 		for the CXF Bus instance used by the service endpoints defined in this XML 
@@ -39,8 +30,9 @@
 		<property name="username" value="ihsan" />
 		<property name="password" value="1234567890" />
 	</bean>
-	<cxf:cxfEndpoint address="http://localhost:40000/box/library/blueprint/register"
-		id="registerEndpoint" serviceClass="org.box.fuse.Registration" />
+	<cxf:cxfEndpoint
+		address="http://localhost:40000/box/library/blueprint/register" id="registerEndpoint"
+		serviceClass="org.box.fuse.Registration" />
 	<!-- <cxf:bus id="bus-5cff5111-420c-4d35-9e3e-a3f7a407d561"> In this example, 
 		we're enabling the logging feature. This will ensure that both the inbound 
 		and outbound XML message are being logged for every web service invocation. 
