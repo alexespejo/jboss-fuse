@@ -1,14 +1,14 @@
 package org.box.fuse.model;
 
 public class Book {
-	private String title,author,stock;
+	private String title, author, stock;
 	private int id;
 
 	public Book() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
+
 	public int getId() {
 		return id;
 	}
