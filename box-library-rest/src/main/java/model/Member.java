@@ -1,8 +1,19 @@
 package org.box.fuse.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "member")
 public class Member {
+	@Column(name = "username")
 	private String username;
+	
+	@Column(name = "firstname")
 	private String firstname;
+	
+	@Column(name = "lastname")
 	private String lastname;
 
 	public Member() {

@@ -1,7 +1,0 @@
-com/boraji/tutorial/spring/config/AppConfig.class
-com/boraji/tutorial/spring/service/PersonServiceImp.class
-com/boraji/tutorial/spring/dao/PersonDaoImp.class
-com/boraji/tutorial/spring/MainApp.class
-com/boraji/tutorial/spring/dao/PersonDao.class
-com/boraji/tutorial/spring/service/PersonService.class
-com/boraji/tutorial/spring/entity/Person.class

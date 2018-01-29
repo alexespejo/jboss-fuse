@@ -32,15 +32,6 @@
     <cxf:cxfEndpoint
         address="http://localhost:40000/box/library/blueprint/register"
         id="registerEndpoint" serviceClass="org.box.fuse.Registration"/>
-    <!-- <cxf:bus id="bus-5cff5111-420c-4d35-9e3e-a3f7a407d561"> In this example, 
-		we're enabling the logging feature. This will ensure that both the inbound 
-		and outbound XML message are being logged for every web service invocation. 
-		<cxf:features> <cxf:logging/> </cxf:features> </cxf:bus> -->
-    <!-- Finally, we're configuring the actual JAX-WS endpoint, referring to 
-		our web service implementation class and the URI address we want to assign 
-		to our service. The address is relative to the CXF servlet URI, with the 
-		default configuration in place, this endpoint will be available at 'http://localhost:8181/cxf/HelloWorld'. -->
-    <!-- <jaxws:endpoint address="/register" id="registerEndpoint" implementor="org.box.fuse.RegistrationImpl"/> -->
     <camelContext id="_context1" xmlns="http://camel.apache.org/schema/blueprint">
         <route id="_route1">
             <from id="_from1" uri="cxf:bean:registerEndpoint"/>

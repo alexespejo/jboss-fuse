@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-Bnd-LastModified: 1516935878951
+Bnd-LastModified: 1516954213000
 Build-Jdk: 1.8.0_144
 Built-By: ihsan
 Bundle-Description: Service for borrowing book in the library
