@@ -17,7 +17,17 @@
 <blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
     xmlns:cxf="http://camel.apache.org/schema/blueprint/cxf"
     xmlns:jaxws="http://cxf.apache.org/blueprint/jaxws"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0           https://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd           http://camel.apache.org/schema/blueprint           http://camel.apache.org/schema/blueprint/camel-blueprint.xsd          http://camel.apache.org/schema/blueprint/cxf           http://camel.apache.org/schema/blueprint/cxf/camel-cxf.xsd           http://cxf.apache.org/blueprint/core           http://cxf.apache.org/schemas/blueprint/core.xsd                 http://cxf.apache.org/blueprint/jaxws           http://cxf.apache.org/schemas/blueprint/jaxws.xsd">
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="
+    http://www.osgi.org/xmlns/blueprint/v1.0.0           
+    https://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd           
+    http://camel.apache.org/schema/blueprint           
+    http://camel.apache.org/schema/blueprint/camel-blueprint.xsd          
+    http://camel.apache.org/schema/blueprint/cxf           
+    http://camel.apache.org/schema/blueprint/cxf/camel-cxf.xsd           
+    http://cxf.apache.org/blueprint/core           
+    http://cxf.apache.org/schemas/blueprint/core.xsd                 
+    http://cxf.apache.org/blueprint/jaxws           
+    http://cxf.apache.org/schemas/blueprint/jaxws.xsd">
     <!-- Adding a <cxf:bus/> definition to the Blueprint XML file is optional: 
 		it is only required if you want to specify some additional configuration 
 		for the CXF Bus instance used by the service endpoints defined in this XML 

@@ -2,5 +2,6 @@
     <wb-module deploy-name="box-library-register-blueprint">
         <wb-resource deploy-path="/" source-path="/src/main/resources"/>
         <wb-resource deploy-path="/" source-path="/.transformations"/>
+        <wb-resource deploy-path="/" source-path="/src/test/java"/>
     </wb-module>
 </project-modules>

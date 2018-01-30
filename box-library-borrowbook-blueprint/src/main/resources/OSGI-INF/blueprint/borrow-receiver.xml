@@ -5,7 +5,7 @@
     <camelContext id="camelContext-269d5f3f-42dc-4181-94fb-627c76a542f1"
         trace="false" xmlns="http://camel.apache.org/schema/blueprint">
         <route id="_route2">
-            <from id="_from1" uri="activemq:queue:mw.box.library.queue?jmsMessageType=Map"/>
+            <from id="_from1" uri="activemqblueprint:queue:mw.box.library.blueprint.queue?jmsMessageType=Map"/>
             <log id="_log1" message="synchronizing borrow book for username: ${body[username]} and bookid ${body[bookid]}"/>
             <transacted id="_transacted1">
                 <to id="_to1" uri="sql:insert into lib_borrowed_book(id, username, bookid, borroweddate) values(:#${random(1,32767)},:#${body[username]}, :#${body[bookid]}, to_date(:#${date:now:yyyy-MM-dd}, 'yyyy-MM-dd'))?dataSource=odsCommonsDS"/>
