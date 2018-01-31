@@ -22,10 +22,8 @@
    The root element for any OSGi Blueprint file is 'blueprint' - you also see the namespace definitions for both the Blueprint
    and the Camel namespaces.
 -->
-<blueprint 	xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
-    		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-    		xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0 https://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd              
-    		  					http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0 https://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd                            http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
     <!--
       The namespace for the camelContext element in Blueprint is 'https://camel.apache.org/schema/blueprint'. Additionally,
       we can also define namespace prefixes we want to use them in the XPath expressions in our CBR.
@@ -33,9 +31,9 @@
       While it is not required to assign id's to the <camelContext/> and <route/> elements, it is a good idea
       to set those for runtime management purposes (logging, JMX MBeans, ...)
     -->
-    <camelContext id="_context1"
-        xmlns="http://camel.apache.org/schema/blueprint">
-        <route id="_route1"/>
+    <camelContext id="_context1" xmlns="http://camel.apache.org/schema/blueprint">
+        <route id="_route1">
+            <from id="_from1" uri="cxfrs:beanId:address"/>
+        </route>
     </camelContext>
 </blueprint>
-

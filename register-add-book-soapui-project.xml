@@ -153,33 +153,33 @@
          </fuse:arg0>
       </fuse:addbook>
    </soapenv:Body>
-</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://fuse.box.org/RegistrationPortType/addbook"/></con:call></con:operation><con:operation id="a28499b1-6391-4a54-9620-7bcfe2707ce9" isOneWay="false" action="" name="register" bindingOperationName="register" type="Request-Response" outputName="registerResponse" inputName="register" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="e81f6b3b-4a9d-4e5f-8faf-9ec3f77ab555" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:40000/box/library/blueprint/register</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:fuse="http://fuse.box.org/">
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://fuse.box.org/RegistrationPortType/addbook"/></con:call></con:operation><con:operation id="a28499b1-6391-4a54-9620-7bcfe2707ce9" isOneWay="false" action="" name="register" bindingOperationName="register" type="Request-Response" outputName="registerResponse" inputName="register" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="e81f6b3b-4a9d-4e5f-8faf-9ec3f77ab555" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:40000/box/library/register</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:fuse="http://fuse.box.org/">
    <soapenv:Header/>
    <soapenv:Body>
       <fuse:register>
          <!--Optional:-->
          <fuse:arg0>
             <!--Optional:-->
-            <firstname>?</firstname>
+            <firstname>A</firstname>
             <!--Optional:-->
-            <lastname>?</lastname>
+            <lastname>B</lastname>
             <!--Optional:-->
-            <username>?</username>
+            <username>coy</username>
          </fuse:arg0>
       </fuse:register>
    </soapenv:Body>
-</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://fuse.box.org/RegistrationPortType/register"/><con:wsrmConfig version="1.2"/></con:call><con:call id="647054d8-64c6-4e7b-9527-b91aa747f9b8" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:40000/box/library/blueprint/register</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:fuse="http://fuse.box.org/">
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://fuse.box.org/RegistrationPortType/register"/><con:wsrmConfig version="1.2"/></con:call><con:call id="647054d8-64c6-4e7b-9527-b91aa747f9b8" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:40000/box/library/blueprint/register</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:fuse="http://fuse.box.org/">
    <soapenv:Header/>
    <soapenv:Body>
       <fuse:register>
          <!--Optional:-->
          <fuse:arg0>
             <!--Optional:-->
-            <firstname>?</firstname>
+            <firstname>Ihsan</firstname>
             <!--Optional:-->
-            <lastname>?</lastname>
+            <lastname>arif</lastname>
             <!--Optional:-->
-            <username>?</username>
+            <username>coy</username>
          </fuse:arg0>
       </fuse:register>
    </soapenv:Body>

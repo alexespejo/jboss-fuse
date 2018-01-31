@@ -17,8 +17,8 @@
   </licenses>
   <properties>
     <camel.version>2.17.0.redhat-630254</camel.version>
-    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <version.maven-bundle-plugin>3.2.0</version.maven-bundle-plugin>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <jboss.fuse.bom.version>6.3.0.redhat-254</jboss.fuse.bom.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
@@ -64,6 +64,11 @@
           <groupId>org.apache.felix</groupId>
         </exclusion>
       </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.camel</groupId>
+      <artifactId>camel-cxf</artifactId>
+      <version>2.17.0.redhat-630254</version>
     </dependency>
   </dependencies>
   <repositories>
@@ -129,7 +134,9 @@
         <configuration>
           <instructions>
             <Bundle-SymbolicName>access-register-soap</Bundle-SymbolicName>
-            <Bundle-Name>Empty Camel Blueprint Example [access-register-soap]</Bundle-Name></instructions></configuration>
+            <Bundle-Name>Empty Camel Blueprint Example [access-register-soap]</Bundle-Name>
+          </instructions>
+        </configuration>
       </plugin>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>

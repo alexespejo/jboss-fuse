@@ -17,17 +17,7 @@
 <blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
     xmlns:cxf="http://camel.apache.org/schema/blueprint/cxf"
     xmlns:jaxws="http://cxf.apache.org/blueprint/jaxws"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="
-    http://www.osgi.org/xmlns/blueprint/v1.0.0           
-    https://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd           
-    http://camel.apache.org/schema/blueprint           
-    http://camel.apache.org/schema/blueprint/camel-blueprint.xsd          
-    http://camel.apache.org/schema/blueprint/cxf           
-    http://camel.apache.org/schema/blueprint/cxf/camel-cxf.xsd           
-    http://cxf.apache.org/blueprint/core           
-    http://cxf.apache.org/schemas/blueprint/core.xsd                 
-    http://cxf.apache.org/blueprint/jaxws           
-    http://cxf.apache.org/schemas/blueprint/jaxws.xsd">
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="     http://www.osgi.org/xmlns/blueprint/v1.0.0                https://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd                http://camel.apache.org/schema/blueprint                http://camel.apache.org/schema/blueprint/camel-blueprint.xsd               http://camel.apache.org/schema/blueprint/cxf                http://camel.apache.org/schema/blueprint/cxf/camel-cxf.xsd                http://cxf.apache.org/blueprint/core                http://cxf.apache.org/schemas/blueprint/core.xsd                      http://cxf.apache.org/blueprint/jaxws                http://cxf.apache.org/schemas/blueprint/jaxws.xsd">
     <!-- Adding a <cxf:bus/> definition to the Blueprint XML file is optional: 
 		it is only required if you want to specify some additional configuration 
 		for the CXF Bus instance used by the service endpoints defined in this XML 
@@ -35,7 +25,7 @@
     <bean
         class="org.springframework.jdbc.datasource.SimpleDriverDataSource" id="odsCommonsDS">
         <property name="driverClass" value="oracle.jdbc.driver.OracleDriver"/>
-        <property name="url" value="jdbc:oracle:thin:@(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=172.25.139.178)(PORT=1521))(ADDRESS=(PROTOCOL=TCP)(HOST=172.25.139.178)(PORT=1521))(LOAD_BALANCE=yes)(FAILOVER=yes)(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=XE)))"/>
+        <property name="url" value="jdbc:oracle:thin:@(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=localhost)(PORT=1521))(ADDRESS=(PROTOCOL=TCP)(HOST=localhost)(PORT=1521))(LOAD_BALANCE=yes)(FAILOVER=yes)(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=XE)))"/>
         <property name="username" value="ihsan"/>
         <property name="password" value="1234567890"/>
     </bean>

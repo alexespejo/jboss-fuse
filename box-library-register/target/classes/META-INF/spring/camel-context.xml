@@ -11,53 +11,48 @@
 	language governing permissions and limitations under the License. -->
 <!-- Configures the Camel Context -->
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:cxf="http://camel.apache.org/schema/cxf" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans  http://www.springframework.org/schema/beans/spring-beans.xsd http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd  http://camel.apache.org/schema/cxf  http://camel.apache.org/schema/cxf/camel-cxf.xsd">
-	<bean class="org.springframework.jdbc.datasource.SimpleDriverDataSource"
-		id="odsCommonsDS">
-		<property name="driverClass" value="oracle.jdbc.driver.OracleDriver" />
-		<property name="url"
-			value="jdbc:oracle:thin:@(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=172.25.139.178)(PORT=1521))(ADDRESS=(PROTOCOL=TCP)(HOST=172.25.139.178)(PORT=1521))(LOAD_BALANCE=yes)(FAILOVER=yes)(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=XE)))" />
-		<property name="username" value="ihsan" />
-		<property name="password" value="1234567890" />
-	</bean>
-	<cxf:cxfEndpoint address="http://localhost:40000/box/library/register"
-		id="registerEndpoint" serviceClass="org.box.fuse.Registration" />
-	<camelContext id="_camelContext1" xmlns="http://camel.apache.org/schema/spring">
-		<route id="_route1">
-			<from id="_from1" uri="cxf:bean:registerEndpoint" />
-			<recipientList id="_recipientList1">
-				<simple>direct:${header.operationName}</simple>
-			</recipientList>
-		</route>
-		<route id="_register">
-			<from id="_from2" uri="direct:register" />
-			<log id="_log1"
-				message="registering member data, username: ${body[0].username}, firstname: ${body[0].firstname}, lastname: ${body[0].lastname}" />
-			<to id="_to1"
-				uri="sql:insert into lib_member(username, firstname, lastname) values(:#${body[0].username}, :#${body[0].firstname}, :#${body[0].lastname})?dataSource=odsCommonsDS" />
-			<setBody id="_setBody1">
-				<simple>registration for ${body[0].username} has been completed</simple>
-			</setBody>
-		</route>
-		<route id="_unregister">
-			<from id="_from3" uri="direct:unregister" />
-			<log id="_log2" message="deleting member with username: ${body[0]}" />
-			<to id="_to2"
-				uri="sql:delete from lib_member where username = :#${body[0]}?dataSource=odsCommonsDS" />
-			<setBody id="_setBody2">
-				<simple>${body[0]} sucessfully unregistered</simple>
-			</setBody>
-		</route>
-		<route id="_addbook">
-			<from id="_from4" uri="direct:addbook" />
-			<log id="_log3"
-				message="adding book data,id: ${body[0].id} title: ${body[0].title}, author: ${body[0].author}, stock: ${body[0].stock}" />
-			<to id="_to3"
-				uri="sql:insert into lib_book(id,title, author, stock) values(:#${body[0].id},:#${body[0].title}, :#${body[0].author}, :#${body[0].stock})?dataSource=odsCommonsDS" />
-			<setBody id="_setBody3">
-				<simple>${body[0].title} sucessfully adding book</simple>
-			</setBody>
-		</route>
-	</camelContext>
+    xmlns:cxf="http://camel.apache.org/schema/cxf"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans  http://www.springframework.org/schema/beans/spring-beans.xsd http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd  http://camel.apache.org/schema/cxf  http://camel.apache.org/schema/cxf/camel-cxf.xsd">
+    <bean
+        class="org.springframework.jdbc.datasource.SimpleDriverDataSource" id="odsCommonsDS">
+        <property name="driverClass" value="oracle.jdbc.driver.OracleDriver"/>
+        <property name="url" value="jdbc:oracle:thin:@(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=localhost)(PORT=1521))(ADDRESS=(PROTOCOL=TCP)(HOST=localhost)(PORT=1521))(LOAD_BALANCE=yes)(FAILOVER=yes)(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=XE)))"/>
+        <property name="username" value="ihsan"/>
+        <property name="password" value="1234567890"/>
+    </bean>
+    <cxf:cxfEndpoint
+        address="http://localhost:40000/box/library/register"
+        id="registerEndpoint" serviceClass="org.box.fuse.Registration"/>
+    <camelContext id="_camelContext1" xmlns="http://camel.apache.org/schema/spring">
+        <route id="_route1">
+            <from id="_from1" uri="cxf:bean:registerEndpoint"/>
+            <recipientList id="_recipientList1">
+                <simple>direct:${header.operationName}</simple>
+            </recipientList>
+        </route>
+        <route id="_register">
+            <from id="_from2" uri="direct:register"/>
+            <log id="_log1" message="registering member data, username: ${body[0].username}, firstname: ${body[0].firstname}, lastname: ${body[0].lastname}"/>
+            <to id="_to1" uri="sql:insert into lib_member(username, firstname, lastname) values(:#${body[0].username}, :#${body[0].firstname}, :#${body[0].lastname})?dataSource=odsCommonsDS"/>
+            <setBody id="_setBody1">
+                <simple>registration for ${body[0].username} has been completed</simple>
+            </setBody>
+        </route>
+        <route id="_unregister">
+            <from id="_from3" uri="direct:unregister"/>
+            <log id="_log2" message="deleting member with username: ${body[0]}"/>
+            <to id="_to2" uri="sql:delete from lib_member where username = :#${body[0]}?dataSource=odsCommonsDS"/>
+            <setBody id="_setBody2">
+                <simple>${body[0]} sucessfully unregistered</simple>
+            </setBody>
+        </route>
+        <route id="_addbook">
+            <from id="_from4" uri="direct:addbook"/>
+            <log id="_log3" message="adding book data,id: ${body[0].id} title: ${body[0].title}, author: ${body[0].author}, stock: ${body[0].stock}"/>
+            <to id="_to3" uri="sql:insert into lib_book(id,title, author, stock) values(:#${body[0].id},:#${body[0].title}, :#${body[0].author}, :#${body[0].stock})?dataSource=odsCommonsDS"/>
+            <setBody id="_setBody3">
+                <simple>${body[0].title} sucessfully adding book</simple>
+            </setBody>
+        </route>
+    </camelContext>
 </beans>

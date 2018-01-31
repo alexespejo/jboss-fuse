@@ -181,8 +181,7 @@
 						<Bundle-Name>Empty Camel Blueprint Example
 							[box-library-register-blueprint]</Bundle-Name>
 						<Private-Package>org.box.fuse.model.*</Private-Package>
-						<Import-Package>oracle.jdbc.driver,*,
-							com.sun.el;version="[2,3)"</Import-Package>
+						<Import-Package>oracle.jdbc.driver,*</Import-Package>
 					</instructions>
 				</configuration>
 			</plugin>

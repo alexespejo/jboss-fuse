@@ -1,0 +1,18 @@
+Manifest-Version: 1.0
+Bnd-LastModified: 1517369868103
+Build-Jdk: 1.8.0_144
+Built-By: ihsan
+Bundle-Description: List all books that are available in the library
+Bundle-License: http://www.apache.org/licenses/LICENSE-2.0.html
+Bundle-ManifestVersion: 2
+Bundle-Name: Empty Camel Spring Example [box-library-listbook]
+Bundle-SymbolicName: box-library-listbook
+Bundle-Version: 1.0.0.SNAPSHOT
+Created-By: Apache Maven Bundle Plugin
+Export-Package: org.box.fuse.library;uses:="javax.ws.rs,org.apache.camel
+ ";version="1.0.0"
+Import-Package: com.fasterxml.jackson.databind;version="[2.6,3)",javax.w
+ s.rs;version="[2.0,3)",org.apache.camel;version="[2.17,3)",org.springfr
+ amework.jdbc.datasource,oracle.jdbc.driver
+Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.8))"
+Tool: Bnd-3.2.0.201605172007
