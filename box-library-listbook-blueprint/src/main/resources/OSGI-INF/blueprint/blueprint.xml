@@ -1,37 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-    JBoss, Home of Professional Open Source
-    Copyright 2014, Red Hat, Inc. and/or its affiliates, and individual
-    contributors by the @authors tag. See the copyright.txt in the
-    distribution for a full listing of individual contributors.
-
-    Licensed under the Apache License, Version 2.0 (the "License");
-    you may not use this file except in compliance with the License.
-    You may obtain a copy of the License at
-    http://www.apache.org/licenses/LICENSE-2.0
-    Unless required by applicable law or agreed to in writing, software
-    distributed under the License is distributed on an "AS IS" BASIS,
-    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-    See the License for the specific language governing permissions and
-    limitations under the License.
--->
-<!--
-   This is the OSGi Blueprint XML file defining the Camel context and routes.  Because the file is in the
-   OSGI-INF/blueprint directory inside our JAR, it will be automatically activated as soon as the bundle is installed.
-
-   The root element for any OSGi Blueprint file is 'blueprint' - you also see the namespace definitions for both the Blueprint
-   and the Camel namespaces.
--->
 <blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0 https://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd                            http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
-    <!--
-      The namespace for the camelContext element in Blueprint is 'https://camel.apache.org/schema/blueprint'. Additionally,
-      we can also define namespace prefixes we want to use them in the XPath expressions in our CBR.
-
-      While it is not required to assign id's to the <camelContext/> and <route/> elements, it is a good idea
-      to set those for runtime management purposes (logging, JMX MBeans, ...)
-    -->
+    xmlns:cxf="http://camel.apache.org/schema/blueprint/cxf"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0                https://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd                http://camel.apache.org/schema/blueprint                http://camel.apache.org/schema/blueprint/camel-blueprint.xsd               http://camel.apache.org/schema/blueprint/cxf                http://camel.apache.org/schema/blueprint/cxf/camel-cxf.xsd                http://cxf.apache.org/blueprint/core                http://cxf.apache.org/schemas/blueprint/core.xsd">
+    
+    <cxf:rsServer address="http://localhost:40000/box/library/listbook"
+        id="listBookService" serviceClass="org.box.fuse.library.BookDirectory"/>
+    <bean
+        class="org.springframework.jdbc.datasource.SimpleDriverDataSource" id="odsCommonsDS">
+        <property name="driverClass" value="oracle.jdbc.driver.OracleDriver"/>
+        <property name="url" value="jdbc:oracle:thin:@(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=172.25.139.178)(PORT=1521))(ADDRESS=(PROTOCOL=TCP)(HOST=172.25.139.178)(PORT=1521))(LOAD_BALANCE=yes)(FAILOVER=yes)(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=XE)))"/>
+        <property name="username" value="ihsan"/>
+        <property name="password" value="1234567890"/>
+    </bean>
+    <bean class="org.box.fuse.library.BookProcessor" id="bookProcessor"/>
+    
     <camelContext id="_context1" xmlns="http://camel.apache.org/schema/blueprint">
-        <route id="_route1"/>
+       <route id="_route1">
+            <from id="_from1" uri="cxfrs://bean://listBookService"/>
+            <log id="_log1" message="etrieving books with id = ${body[0]}"/>
+            <choice id="_choice1">
+                <when id="_when1">
+                    <simple>${body[0]} == 0</simple>
+                    <to id="_to1" uri="sql:select * from lib_book?dataSource=odsCommonsDS"/>
+                </when>
+                <otherwise id="_otherwise1">
+                    <to id="_to2" uri="sql:select * from lib_book where id = :#${body[0]}?dataSource=odsCommonsDS"/>
+                </otherwise>
+            </choice>
+            <process id="_process1" ref="bookProcessor"/>
+        </route>
     </camelContext>
 </blueprint>
