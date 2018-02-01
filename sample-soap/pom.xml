@@ -3,15 +3,15 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
 	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.mycompany</groupId>
-	<artifactId>camel-blueprint</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
-	<packaging>bundle</packaging>
-	<name>Camel Blueprint Quickstart</name>
-	<description>Empty Camel Blueprint Example</description>
+	<groupId>com.poc</groupId>
+	<artifactId>bw-client</artifactId>
+	<name>BWClient</name>
+	<description>Creates a web service using the WSDL contract first</description>
 	<licenses>
 		<license>
-			<name>Apache License, Version 2.0</name>
+			<name>Apache License, 
+	Version 2.0</name>
 			<url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
 			<distribution>repo</distribution>
 		</license>
@@ -41,7 +41,11 @@
 		</dependency>
 		<dependency>
 			<groupId>org.apache.camel</groupId>
-			<artifactId>camel-blueprint</artifactId>
+			<artifactId>camel-spring</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-cxf</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
@@ -52,53 +56,42 @@
 			<artifactId>slf4j-log4j12</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-transports-http-jetty</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.camel</groupId>
-			<artifactId>camel-test-blueprint</artifactId>
-			<scope>test</scope>
-			<exclusions>
-				<exclusion>
-					<artifactId>org.apache.felix.fileinstall</artifactId>
-					<groupId>org.apache.felix</groupId>
-				</exclusion>
-			</exclusions>
+			<artifactId>camel-test-spring</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.camel</groupId>
-			<artifactId>camel-cxf</artifactId>
+			<artifactId>camel-mail</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.apache.camel</groupId>
-			<artifactId>camel-sql</artifactId>
+			<groupId>org.apache.servicemix.specs</groupId>
+			<artifactId>org.apache.servicemix.specs.activation-api-1.1</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.apache.camel</groupId>
-			<artifactId>camel-dozer</artifactId>
+			<groupId>org.apache.activemq</groupId>
+			<artifactId>activemq-camel</artifactId>
 		</dependency>
 
 		<dependency>
-			<groupId>org.osgi</groupId>
-			<artifactId>org.osgi.service.http</artifactId>
-			<version>1.2.1</version>
-			<scope>provided</scope>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-mail</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>org.ow2.asm</groupId>
-			<artifactId>asm-commons</artifactId>
-			<version>5.0.3</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.cxf</groupId>
-			<artifactId>cxf-tools-wsdlto-frontend-jaxws</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.cxf</groupId>
-			<artifactId>cxf-tools-wsdlto-databinding-jaxb</artifactId>
-		</dependency>
-
 	</dependencies>
 	<repositories>
 		<repository>
@@ -110,7 +103,8 @@
 				<enabled>false</enabled>
 			</snapshots>
 			<id>fuse-public-repository</id>
-			<name>FuseSource Community Release Repository</name>
+			<name>FuseSource Community Release 
+	Repository</name>
 			<url>https://repo.fusesource.com/nexus/content/groups/public</url>
 		</repository>
 		<repository>
@@ -136,7 +130,8 @@
 				<enabled>false</enabled>
 			</snapshots>
 			<id>fuse-public-repository</id>
-			<name>FuseSource Community Release Repository</name>
+			<name>FuseSource 
+	Community Release Repository</name>
 			<url>https://repo.fusesource.com/nexus/content/groups/public</url>
 		</pluginRepository>
 		<pluginRepository>
@@ -156,14 +151,39 @@
 		<defaultGoal>install</defaultGoal>
 		<plugins>
 			<plugin>
+				<groupId>org.apache.cxf</groupId>
+				<artifactId>cxf-codegen-plugin</artifactId>
+				<version>2.17.0.redhat-630254</version>
+				<executions>
+					<execution>
+						<id>generate-sources</id>
+						<phase>generate-sources</phase>
+						<configuration>
+							<sourceRoot>${basedir}/target/generated/src/main/java</sourceRoot>
+							<wsdlOptions>
+								<wsdlOption>
+									<wsdl>${basedir}/src/main/resources/wsdl/MyResultService.wsdl</wsdl>
+									<extraargs>
+										<extraarg>-impl</extraarg>
+									</extraargs>
+								</wsdlOption>
+							</wsdlOptions>
+						</configuration>
+						<goals>
+							<goal>wsdl2java</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
 				<groupId>org.apache.felix</groupId>
 				<artifactId>maven-bundle-plugin</artifactId>
 				<version>${version.maven-bundle-plugin}</version>
 				<extensions>true</extensions>
 				<configuration>
 					<instructions>
-						<Bundle-SymbolicName>access-register-soap</Bundle-SymbolicName>
-						<Bundle-Name>Empty Camel Blueprint Example [access-register-soap]</Bundle-Name>
+						<Bundle-SymbolicName>sample-soap</Bundle-SymbolicName>
+						<Bundle-Name>Empty Camel Spring Example [sample-soap]</Bundle-Name>
 					</instructions>
 				</configuration>
 			</plugin>
@@ -187,7 +207,7 @@
 				<artifactId>camel-maven-plugin</artifactId>
 				<version>${camel.version}</version>
 				<configuration>
-					<useBlueprint>true</useBlueprint>
+					<fileApplicationContextUri>src/main/resources/META-INF/spring/camel-context.xml</fileApplicationContextUri>
 				</configuration>
 			</plugin>
 		</plugins>

@@ -57,7 +57,7 @@
     <mapping>
         <class-a>generated_1517192589785.ABCOrder</class-a>
         <class-b>xyzorder.LineItem</class-b>
-        <field>
+        <field custom-converter-id="_customMapping" custom-converter-param="example.MyCustomMapper,brackets">
             <a>header.customerNum</a>
             <b>itemId[1]</b>
         </field>

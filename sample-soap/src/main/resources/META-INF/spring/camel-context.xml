@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:camel="http://camel.apache.org/schema/spring" xmlns:ctx="http://www.springframework.org/schema/context"
+	xmlns:cxf="http://camel.apache.org/schema/cxf" xmlns:http="http://cxf.apache.org/transports/http/configuration"
+	xmlns:http-conf="http://cxf.apache.org/transports/http/configuration"
+	xmlns:jaxws="http://cxf.apache.org/jaxws" xmlns:osgi="http://www.springframework.org/schema/osgi"
+	xmlns:sec="http://cxf.apache.org/configuration/security" xmlns:soap="http://cxf.apache.org/bindings/soap"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="        http://camel.apache.org/schema/cxf http://camel.apache.org/schema/cxf/camel-cxf.xsd        http://cxf.apache.org/bindings/soap http://cxf.apache.org/schemas/configuration/soap.xsd        http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd           http://www.springframework.org/schema/beans           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd          http://camel.apache.org/schema/spring           http://camel.apache.org/schema/spring/camel-spring.xsd          http://www.springframework.org/schema/osgi http://www.springframework.org/schema/osgi/spring-osgi.xsd          http://cxf.apache.org/bindings/soap http://cxf.apache.org/schemas/configuration/soap.xsd        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd          http://cxf.apache.org/configuration/security http://cxf.apache.org/schemas/configuration/security.xsd     http://cxf.apache.org/transports/http/configuration http://cxf.apache.org/schemas/configuration/http-conf.xsd">
+	<bean class="org.apache.activemq.camel.component.ActiveMQComponent"
+		id="activemq">
+		<property name="brokerURL" value="tcp://localhost:61616" />
+		<property name="userName" value="admin" />
+		<property name="password" value="admin" />
+	</bean>
+	<camelContext id="camelContext-d2ab96ec-7ffa-41d1-9879-8df4bfbb4ddf"
+		xmlns="http://camel.apache.org/schema/spring">
+		<route id="_route1">
+			<from id="_from1" uri="activemq:queue:input" />
+			<to id="_to1" uri="WebServiceClient" />
+			<to id="_to2" uri="activemq:queue:responseXML" />
+		</route>
+	</camelContext>
+	<jaxws:client
+		address="http://localhost:8181/WebService.serviceagent/getResultEndpoint1"
+		id="sapPiProxy" serviceClass="com.example.xmlns._1386864564116.GetResult" />
+	<bean class="com.mycompany.camel.cxf.contract.first.ServiceClientInvoker"
+		destroy-method="destroy" id="WebServiceClient" init-method="init">
+		<property name="myService" ref="sapPiProxy" />
+	</bean>
+</beans>
