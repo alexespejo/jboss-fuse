@@ -11,19 +11,3 @@ public interface RegistrationService
 
 	String unregister(String username);
 }
-
-//public class RegistrationEndpoint implements RegistrationService
-//{
-//	
-//	@Override
-//	public String register(Member member) {
-//		return null;
-//	}
-//
-//	@Override
-//	public String unregister(String username) {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
-//	
-//}

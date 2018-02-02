@@ -1,32 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
     xmlns:cxf="http://camel.apache.org/schema/blueprint/cxf"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-    xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0                
-    https://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd                
-    http://camel.apache.org/schema/blueprint                
-    http://camel.apache.org/schema/blueprint/camel-blueprint.xsd               
-    http://camel.apache.org/schema/blueprint/cxf                
-    http://camel.apache.org/schema/blueprint/cxf/camel-cxf.xsd                
-    http://cxf.apache.org/blueprint/core                
-    http://cxf.apache.org/schemas/blueprint/core.xsd">
-    
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0                     https://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd                     http://camel.apache.org/schema/blueprint                     http://camel.apache.org/schema/blueprint/camel-blueprint.xsd                    http://camel.apache.org/schema/blueprint/cxf                     http://camel.apache.org/schema/blueprint/cxf/camel-cxf.xsd                     http://cxf.apache.org/blueprint/core                     http://cxf.apache.org/schemas/blueprint/core.xsd">
     <cxf:cxfEndpoint
         address="http://localhost:40000/box/library/blueprint/register"
-        endpointName="ws:RegistrationPort"
+        endpointName="ws:RegistrationPort" id="RegistrationEndpoint"
         serviceName="ws:Register"
-        id="RegistrationEndpoint"
-        wsdlURL="http://localhost:40000/box/library/blueprint/register?wsdl" 
-        xmlns:ws="http://fuse.box.org/">
-        <cxf:properties>
-            <entry key="dataFormat" value="PAYLOAD"/>
-        </cxf:properties>
+        wsdlURL="http://localhost:40000/box/library/blueprint/register?wsdl" xmlns:ws="http://fuse.box.org/">
     </cxf:cxfEndpoint>
+    
+     <bean id="reportRegistrationRoutes" class="org.box.fuse.RegistrationRoutes"/>
+     
     <camelContext id="_context1" xmlns="http://camel.apache.org/schema/blueprint">
         <route id="_route1">
-            <from id="_from1" uri="file:src/data?fileName=register.xml&amp;noop=true"/>
+            <!-- <from id="_from1" uri="file:src/data?fileName=register.xml&amp;noop=true"/>
             <to id="_to1" uri="cxf:RegistrationEndpoint"/>
-            <log id="_log1" message="Success ${body}"/>
+            <log id="_log1" message="Success ${body}"/> -->
+            <routeBuilder id="_routeBuilder1" ref="reportRegistrationRoutes"/>
         </route>
     </camelContext>
 </blueprint>
