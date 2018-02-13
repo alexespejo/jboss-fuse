@@ -174,4 +174,5 @@
 			</plugin>
 		</plugins>
 	</build>
+	<url>http://localhost:40000/box/library/register</url>
 </project>

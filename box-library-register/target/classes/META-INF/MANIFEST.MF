@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-Bnd-LastModified: 1517369510648
+Bnd-LastModified: 1518487509727
 Build-Jdk: 1.8.0_144
 Built-By: ihsan
 Bundle-Description: box library registration
@@ -9,9 +9,9 @@ Bundle-Name: Empty Camel Spring Example [box-library-register]
 Bundle-SymbolicName: box-library-register
 Bundle-Version: 1.0.0.SNAPSHOT
 Created-By: Apache Maven Bundle Plugin
-Export-Package: org.box.fuse.model;version="1.0.0",org.box.fuse;uses:="o
- rg.box.fuse.model";version="1.0.0"
-Import-Package: org.box.fuse.model,org.springframework.jdbc.datasource,o
- racle.jdbc.driver
+Export-Package: org.box.fuse.model;version="1.0.0",org.box.fuse;uses:="j
+ avax.jws,org.box.fuse.model";version="1.0.0"
+Import-Package: javax.jws,org.box.fuse.model,org.springframework.jdbc.da
+ tasource,oracle.jdbc.driver
 Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.8))"
 Tool: Bnd-3.2.0.201605172007

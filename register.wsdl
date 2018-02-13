@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://fuse.box.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="Registration" targetNamespace="http://fuse.box.org/">
   <wsdl:types>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://fuse.box.org/" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://fuse.box.org/">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://fuse.box.org/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://fuse.box.org/">
   <xs:complexType name="member">
     <xs:sequence>
       <xs:element minOccurs="0" name="username" type="xs:string"/>
