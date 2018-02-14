@@ -1,1 +1,3 @@
-/home/ihsan/Documents/jboss/osgi-service/src/test/java/com/redhat/training/AppTest.java
+/home/ihsan/Documents/jboss/osgi-service/src/test/java/com/redhat/training/BlueprintBeanPropertiesOverrideFromTestRouteTest.java
+/home/ihsan/Documents/jboss/osgi-service/src/test/java/com/redhat/training/BlueprintBeanRouteTest.java
+/home/ihsan/Documents/jboss/osgi-service/src/test/java/com/redhat/training/BlueprintBeanPropertiesOverrideFromFileRouteTest.java
