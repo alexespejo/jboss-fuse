@@ -1,9 +1,11 @@
 <order>
 	<orderId>3</orderId>
 	<orderItems>
-		<orderItem>3</orderItem>
-		<orderItemQty>3</orderItemQty>
-		<orderItemPublisherName>Rahman</orderItemPublisherName>
-		<orderItemPrice>13.59</orderItemPrice>
+		<orderItem>
+			<orderItemId>3</orderItemId>
+			<orderItemQty>3</orderItemQty>
+			<orderItemPublisherName>ABC 3</orderItemPublisherName>
+			<orderItemPrice>44.59</orderItemPrice>
+		</orderItem>
 	</orderItems>
 </order>
