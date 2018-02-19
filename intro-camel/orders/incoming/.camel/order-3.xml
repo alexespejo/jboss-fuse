@@ -1,0 +1,14 @@
+<order>
+	<orderId>3</orderId>
+	<shippingAddress>
+        <zipCode>+8496</zipCode>
+    </shippingAddress>
+	<orderItems>
+		<orderItem>
+			<orderItemId>3</orderItemId>
+			<orderItemQty>3</orderItemQty>
+			<orderItemPublisherName>Ihsan Company</orderItemPublisherName>
+			<orderItemPrice>100.59</orderItemPrice>
+		</orderItem>
+	</orderItems>
+</order>
