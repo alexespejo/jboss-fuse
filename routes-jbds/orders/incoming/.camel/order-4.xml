@@ -1,0 +1,14 @@
+<order>
+	<orderId>4</orderId>
+	<shippingAddress>
+        <zipCode>124</zipCode>
+    </shippingAddress>
+	<orderItems>
+		<orderItem>
+			<orderItemId>4</orderItemId>
+			<orderItemQty>4</orderItemQty>
+			<orderItemPublisherName>Namming</orderItemPublisherName>
+			<orderItemPrice>110.59</orderItemPrice>
+		</orderItem>
+	</orderItems>
+</order>

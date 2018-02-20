@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- JBoss, Home of Professional Open Source Copyright 2014, Red Hat, Inc. 
+	and/or its affiliates, and individual contributors by the @authors tag. See 
+	the copyright.txt in the distribution for a full listing of individual contributors. 
+	Licensed under the Apache License, Version 2.0 (the "License"); you may not 
+	use this file except in compliance with the License. You may obtain a copy 
+	of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required 
+	by applicable law or agreed to in writing, software distributed under the 
+	License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS 
+	OF ANY KIND, either express or implied. See the License for the specific 
+	language governing permissions and limitations under the License. -->
+<!-- This is the OSGi Blueprint XML file defining the Camel context and routes. 
+	Because the file is in the OSGI-INF/blueprint directory inside our JAR, it 
+	will be automatically activated as soon as the bundle is installed. The root 
+	element for any OSGi Blueprint file is 'blueprint' - you also see the namespace 
+	definitions for both the Blueprint and the Camel namespaces. -->
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0 https://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd                            http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
+    <bean class="org.apache.activemq.camel.component.ActiveMQComponent" id="activemq">
+        <property name="connectionFactory">
+            <bean class="org.apache.activemq.ActiveMQConnectionFactory">
+                <property name="brokerURL" value="vm://localhost?broker.persistent=false&amp;broker.useJmx=false&amp;broker.enableStatistics=false"/>
+            </bean>
+        </property>
+    </bean>
+    <camelContext id="_context1" xmlns="http://camel.apache.org/schema/blueprint">
+        <route id="_route1">
+            <from id="_from1" uri="file:orders/incoming"/>
+            <setHeader headerName="orderId" id="_setHeader1">
+                <xpath>/order/orderId/text()</xpath>
+            </setHeader>
+            <setHeader headerName="vendorName" id="_setHeader2">
+                <xpath>/order/orderItems/orderItem/orderItemPublisherName/text()</xpath>
+            </setHeader>
+            <choice id="_choice1">
+                <when id="_when1">
+                    <simple>${header.vendorName} == 'ABC Company'</simple>
+                    <to id="_to1" uri="activemq:queue:abc"/>
+                </when>
+                <when id="_when2">
+                    <simple>${header.vendorName} == 'ORly'</simple>
+                    <to id="_to2" uri="activemq:queue:orly"/>
+                </when>
+                <when id="_when3">
+                    <simple>${header.vendorName} == 'Namming'</simple>
+                    <to id="_to3" uri="activemq:queue:namming"/>
+                </when>
+                <otherwise id="_otherwise1">
+                    <log id="_log1" message="Failed to deliver order: ${header.orderId} to vendor: ${header.vendorName}"/>
+                </otherwise>
+            </choice>
+        </route>
+        <route id="_route2">
+            <from id="_from2" uri="activemq:queue:abc"/>
+            <setHeader headerName="orderId" id="_setHeader3">
+                <xpath>/order/orderId/text()</xpath>
+            </setHeader>
+            <log id="_log2" message="Delivered order: ${header.orderId} to ABC Company"/>
+        </route>
+        <route id="_route3">
+            <from id="_from3" uri="activemq:queue:orly"/>
+            <setHeader headerName="orderId" id="_setHeader4">
+                <xpath>/order/orderId/text()</xpath>
+            </setHeader>
+            <log id="_log3" message="Delivered order: ${header.orderId} to ORly"/>
+        </route>
+        <route id="_route4">
+            <from id="_from4" uri="activemq:queue:namming"/>
+            <setHeader headerName="orderId" id="_setHeader5">
+                <xpath>/order/orderId/text()</xpath>
+            </setHeader>
+            <log id="_log4" message="Delivered order: ${header.orderId} to Namming"/>
+        </route>
+    </camelContext>
+</blueprint>
