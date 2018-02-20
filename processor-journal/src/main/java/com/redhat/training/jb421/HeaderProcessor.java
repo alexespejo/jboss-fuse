@@ -1,5 +1,10 @@
 package com.redhat.training.jb421;
 
+
+import java.util.Calendar;
+
+import javax.xml.bind.DatatypeConverter;
+
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 import org.slf4j.Logger;
@@ -11,6 +16,7 @@ final private static Logger log = LoggerFactory.getLogger(HeaderProcessor.class)
 	
 	final private static String JOURNAL_URI = "file:orders?fileExist=Append&fileName=journal";
 	final private static String XPATH_VENDOR = "/order/orderItems/orderItem/orderItemPublisherName/text()";
+	final private static String XPATH_DATE = "2016-10-11";
 
 	@Override
 	public void process(Exchange exchange) throws Exception {
