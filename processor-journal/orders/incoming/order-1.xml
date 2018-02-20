@@ -1,0 +1,15 @@
+<order>
+	<orderId>1</orderId>
+	<orderDate>2016-12-10T12:01:00-05:00</orderDate>
+	<shippingAddress>
+		<zipCode>23221</zipCode>
+	</shippingAddress>
+	<orderItems>
+		<orderItem>
+			<orderItemId>1</orderItemId>
+			<orderItemQty>1</orderItemQty>
+			<orderItemPublisherName>ABC Company</orderItemPublisherName>
+			<orderItemPrice>10.59</orderItemPrice>
+		</orderItem>
+	</orderItems>
+</order>
