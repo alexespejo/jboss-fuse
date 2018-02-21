@@ -1,6 +1,5 @@
 package com.redhat.training.jb421;
 
-
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -13,25 +12,23 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.apache.camel.builder.xml.XPathBuilder;
 
-public class HeaderProcessor implements Processor{
-final private static Logger log = LoggerFactory.getLogger(HeaderProcessor.class);
-	
+public class HeaderProcessor implements Processor {
+	final private static Logger log = LoggerFactory.getLogger(HeaderProcessor.class);
+
 	final private static String JOURNAL_URI = "file:orders?fileExist=Append&fileName=journal";
-	final private static String XPATH_VENDOR = "/order/orderItems/orderItem/orderItemPublisherName/text()";
-	final private static String XPATH_DATE = "2016-10-11";
-	final private static DateFormat df = new SimpleDateFormat("yyy-MM-dd hh:mm:ss Z");
+	final private static String XPATH_DATE = "/journal/order/orderDate/text()";
+	final private static DateFormat df = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss Z");
 
 	@Override
 	public void process(Exchange exchange) throws Exception {
 		log.info("Generating the journalFileName header...");
-	    String orderXml = exchange.getIn().getBody(String.class);
-	    String orderDateTime = 
-	        XPathBuilder.xpath(XPATH_DATE).evaluate(exchange.getContext(),
-	        orderXml);
-	    log.info("orderDateTime: " + orderDateTime);
-	    Calendar orderCal = DatatypeConverter.parseDateTime(orderDateTime);
-	    String orderDate = df.format (orderCal.getTime());
-	    exchange.getIn().setHeader("journalFileName", "journal-" + orderDate + ".txt");
+		String orderXml = exchange.getIn().getBody(String.class);
+//		log.info(orderXml);
+		String orderDateTime = XPathBuilder.xpath(XPATH_DATE).evaluate(exchange.getContext(), orderXml);
+		log.info("orderDateTime: " + orderDateTime);
+		Calendar orderCal = DatatypeConverter.parseDateTime(orderDateTime);
+		String orderDate = df.format(orderCal.getTime());
+		exchange.getIn().setHeader("journalFileName", "journal-" + orderDate + ".txt");
 	}
 
 }

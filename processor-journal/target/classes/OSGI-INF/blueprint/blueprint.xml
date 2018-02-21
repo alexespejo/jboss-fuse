@@ -16,12 +16,15 @@
 	definitions for both the Blueprint and the Camel namespaces. -->
 <blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0 https://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd                            http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
+    <bean class="com.redhat.training.jb421.FTPRouteBuilder" id="ftpRoute"/>
     <bean class="com.redhat.training.jb421.HeaderProcessor" id="headerProcessor"/>
     <camelContext id="_context1" xmlns="http://camel.apache.org/schema/blueprint">
+        <propertyPlaceholder id="server" location="server.properties"/>
+        <routeBuilder ref="ftpRoute"/>
         <route id="headerRoute">
-            <from id="fromFiles" uri="file:orders/incoming"/>
+        	<from id="fromDirectHeader" uri="direct:header"/>
             <process id="processHeader" ref="headerProcessor"/>
-            <toD id="toJournal" uri="file:orders?             fileExist=Append&amp;fileName=${header.journalFileName}"/>
+            <toD id="toJournal" uri="file:orders?fileExist=Append&amp;fileName=${header.journalFileName}"/>
         </route>
     </camelContext>
 </blueprint>
