@@ -58,7 +58,25 @@
       <version>${log4j-version}</version>
       <scope>test</scope>
     </dependency>
-
+    
+    <!-- for testing using FakeFtpServer -->
+    <dependency>
+      <groupId>commons-net</groupId>
+      <artifactId>commons-net</artifactId>
+      <version>3.5</version>
+    </dependency>
+    <dependency>
+      <groupId>org.mockftpserver</groupId>
+      <artifactId>MockFtpServer</artifactId>
+      <version>2.7</version>
+    </dependency>
+    
+    <!-- for testing using embedded in-app ActiveMQ -->
+    <dependency>
+      <groupId>org.apache.activemq</groupId>
+      <artifactId>activemq-all</artifactId>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
 
   <build>
