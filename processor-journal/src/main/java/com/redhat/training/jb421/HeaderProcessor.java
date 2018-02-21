@@ -1,6 +1,8 @@
 package com.redhat.training.jb421;
 
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 import javax.xml.bind.DatatypeConverter;
@@ -17,6 +19,7 @@ final private static Logger log = LoggerFactory.getLogger(HeaderProcessor.class)
 	final private static String JOURNAL_URI = "file:orders?fileExist=Append&fileName=journal";
 	final private static String XPATH_VENDOR = "/order/orderItems/orderItem/orderItemPublisherName/text()";
 	final private static String XPATH_DATE = "2016-10-11";
+	final private static DateFormat df = new SimpleDateFormat("yyy-MM-dd hh:mm:ss Z");
 
 	@Override
 	public void process(Exchange exchange) throws Exception {

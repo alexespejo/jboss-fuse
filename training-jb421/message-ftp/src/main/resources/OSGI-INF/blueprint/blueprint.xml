@@ -24,7 +24,7 @@
     <camelContext id="_context1" xmlns="http://camel.apache.org/schema/blueprint">
         <propertyPlaceholder id="server" location="server.properties"/>
         <route id="ftpRoute">
-            <from id="_from1" uri="ftp:{{server.hostname}}:{{server.port}}/order?password={{server.password}}&amp;username={{server.username}}&amp;delete=true"/>
+            <from id="_from1" uri="ftp:{{server.hostname}}:{{server.port}}/Documents/jboss/test_order/order?password={{server.password}}&amp;username={{server.username}}&amp;delete=true"/>
             <log id="_log1" message="${body}"/>
             <to id="_to1" uri="file:orders?fileExist=Append&amp;fileName=${header.CamelFileHost}"/>
         </route>

@@ -3,12 +3,11 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
 	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.mycompany</groupId>
-	<artifactId>camel-blueprint</artifactId>
+	<groupId>com.redhat.training.jb421</groupId>
+	<artifactId>fuse-mgmt</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>bundle</packaging>
-	<name>Camel Blueprint Quickstart</name>
-	<description>Empty Camel Blueprint Example</description>
+	<name>GE: Deploying Camel Projects on Fuse</name>
 	<licenses>
 		<license>
 			<name>Apache License, Version 2.0</name>
@@ -42,20 +41,6 @@
 		<dependency>
 			<groupId>org.apache.camel</groupId>
 			<artifactId>camel-blueprint</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.camel</groupId>
-			<artifactId>camel-ftp</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.activemq</groupId>
-			<artifactId>activemq-camel</artifactId>
-			<version>5.11.0.redhat-630254</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.camel</groupId>
-			<artifactId>camel-jms</artifactId>
-			<version>2.17.0.redhat-630254</version>
 		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
@@ -143,8 +128,9 @@
 				<extensions>true</extensions>
 				<configuration>
 					<instructions>
-						<Bundle-SymbolicName>hybrid-routes</Bundle-SymbolicName>
-						<Bundle-Name>Empty Camel Blueprint Example [hybrid-routes]</Bundle-Name>
+						<Bundle-SymbolicName>fuse-mgmt</Bundle-SymbolicName>
+						<Bundle-Name>GE: Deploying Camel Projects on Fuse</Bundle-Name>
+						<Private-Package>com.redhat.training.jb421</Private-Package>
 					</instructions>
 				</configuration>
 			</plugin>
@@ -173,4 +159,5 @@
 			</plugin>
 		</plugins>
 	</build>
+	<description>GE: Deploying Camel Projects on Fuse</description>
 </project>
