@@ -1,32 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
-    xmlns:cm="http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.1.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="          http://www.osgi.org/xmlns/blueprint/v1.0.0 https://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd          http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
-    <bean class="com.redhat.training.jb421.HeaderProcessor" id="headerProcessor"/>
-    <bean class="com.redhat.training.jb421.WrapProcessor" id="wrapProcessor"/>
-    <camelContext id="blueprint-service-context" xmlns="http://camel.apache.org/schema/blueprint">
-        <propertyPlaceholder id="server" location="server.properties"/>
-        <route id="ftpAbc">
-            <from id="_form1" uri="ftp:{{server.hostname}}:{{server.port}}/order/abc?username={{server.username}}&amp;password={{server.password}}&amp;delete=true"/>
-            <to id="_to1" uri="direct:wrap"/>
-        </route>
-        <route id="ftpOrly">
-            <from id="_form2" uri="ftp:{{server.hostname}}:{{server.port}}/order/orly?username={{server.username}}&amp;password={{server.password}}&amp;delete=true"/>
-            <to id="_to12" uri="direct:wrap"/>
-        </route>
-        <route id="ftpNamming">
-            <from id="_form3" uri="ftp:{{server.hostname}}:{{server.port}}/order/namming?username={{server.username}}&amp;password={{server.password}}&amp;delete=true"/>
-            <to id="_to3" uri="direct:wrap"/>
-        </route>
-        <route id="wrapRoute">
-            <from id="fromDirectWrap" uri="direct:wrap"/>
-            <process id="processWrap" ref="wrapProcessor"/>
-            <to id="toDirectHeader" uri="direct:header"/>
-        </route>
-        <route id="journalRoute">
-            <from id="fromDirectHeader" uri="direct:header"/>
-            <process id="processHeader" ref="headerProcessor"/>
-            <toD id="toJournalOrQueue" uri="${header.destinationURI}"/>
-        </route>
-    </camelContext>
+	xmlns:cm="http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.1.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="          http://www.osgi.org/xmlns/blueprint/v1.0.0 https://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd          http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
+
+	<bean class="org.apache.activemq.camel.component.ActiveMQComponent"
+		id="activemq">
+		<property name="connectionFactory">
+			<bean class="org.apache.activemq.ActiveMQConnectionFactory">
+				<property name="brokerURL" value="vm://amq" />
+			</bean>
+		</property>
+	</bean>
+	<bean class="com.redhat.training.jb421.HeaderProcessor" id="headerProcessor" />
+	<bean class="com.redhat.training.jb421.WrapProcessor" id="wrapProcessor" />
+
+	<camelContext id="blueprint-service-context"
+		xmlns="http://camel.apache.org/schema/blueprint">
+		<propertyPlaceholder id="server" location="server.properties" />
+		<route id="ftpAbc">
+			<from id="_form1"
+				uri="ftp://{{server.hostname}}:{{server.port}}/Documents/jboss/test_order/order2/abc?username={{server.username}}&amp;password={{server.password}}" />
+			<to id="_to1" uri="direct:wrap" />
+		</route>
+		<route id="ftpOrly">
+			<from id="_form2"
+				uri="ftp://{{server.hostname}}:{{server.port}}/Documents/jboss/test_order/order2/orly?username={{server.username}}&amp;password={{server.password}}" />
+			<to id="_to12" uri="direct:wrap" />
+		</route>
+		<route id="ftpNamming">
+			<from id="_form3"
+				uri="ftp://{{server.hostname}}:{{server.port}}/Documents/jboss/test_order/order2/namming?username={{server.username}}&amp;password={{server.password}}" />
+			<to id="_to3" uri="direct:wrap" />
+		</route>
+		<route id="wrapRoute">
+			<from id="fromDirectWrap" uri="direct:wrap" />
+			<process id="processWrap" ref="wrapProcessor" />
+			<to id="toDirectHeader" uri="direct:header" />
+		</route>
+		<route id="journalRoute">
+			<from id="fromDirectHeader" uri="direct:header" />
+			<process id="processHeader" ref="headerProcessor" />
+			<toD id="toJournalOrQueue" uri="${header.destinationURI}" />
+		</route>
+	</camelContext>
 </blueprint>
