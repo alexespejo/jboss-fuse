@@ -10,7 +10,7 @@ public class HeaderProcessor implements Processor {
 
 	final private static Logger log = LoggerFactory.getLogger(HeaderProcessor.class);
 
-	final private static String JOURNAL_URI = "file:orders?fileExist=Append&fileName=journal";
+	final private static String JOURNAL_URI = "file:/tmp/orders?fileExist=Append&fileName=journal-";
 	final private static String QUEUE_URI = "activemq:queue:abc?username={{amq.username}}&password={{amq.password}}";
 
 	final private static String XPATH_VENDOR = "/journal/order/orderItems/orderItem/orderItemPublisher/text()";
