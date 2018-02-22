@@ -22,7 +22,7 @@
         <propertyPlaceholder id="server" location="server.properties"/>
         <routeBuilder ref="ftpRoute"/>
         <route id="headerRoute">
-        	<from id="fromDirectHeader" uri="direct:header"/>
+            <from id="fromDirectHeader" uri="direct:header"/>
             <process id="processHeader" ref="headerProcessor"/>
             <toD id="toJournal" uri="file:orders?fileExist=Append&amp;fileName=${header.journalFileName}"/>
         </route>
