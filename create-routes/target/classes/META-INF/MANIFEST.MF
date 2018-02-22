@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bnd-LastModified: 1519286923984
+Build-Jdk: 1.8.0_144
+Built-By: ihsan
+Bundle-Blueprint: OSGI-INF/blueprint/blueprint.xml
+Bundle-Description: Empty Camel Blueprint Example
+Bundle-License: http://www.apache.org/licenses/LICENSE-2.0.html
+Bundle-ManifestVersion: 2
+Bundle-Name: Empty Camel Blueprint Example [create-routes]
+Bundle-SymbolicName: create-routes
+Bundle-Version: 1.0.0.SNAPSHOT
+Created-By: Apache Maven Bundle Plugin
+Import-Package: org.osgi.service.blueprint;version="[1.0.0,2.0.0)"
+Tool: Bnd-3.2.0.201605172007
