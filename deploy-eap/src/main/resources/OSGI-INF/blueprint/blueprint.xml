@@ -8,21 +8,22 @@
                 <property name="brokerURL" value="vm://amq"/>
             </bean>
         </property>
-    </bean>
+		_
+	</bean>
     <bean class="com.redhat.training.jb421.HeaderProcessor" id="headerProcessor"/>
     <bean class="com.redhat.training.jb421.WrapProcessor" id="wrapProcessor"/>
     <camelContext id="blueprint-service-context" xmlns="http://camel.apache.org/schema/blueprint">
         <propertyPlaceholder id="server" location="server.properties"/>
         <route id="ftpAbc">
-            <from id="_form1" uri="ftp://{{server.hostname}}:{{server.port}}/Documents/jboss/test_order/order2/abc?username={{server.username}}&amp;password={{server.password}}"/>
+            <from id="_form1" uri="file:/home/ihsan/Documents/jboss/test_order/order2/abc"/>
             <to id="_to1" uri="direct:wrap"/>
         </route>
         <route id="ftpOrly">
-            <from id="_form2" uri="ftp://{{server.hostname}}:{{server.port}}/Documents/jboss/test_order/order2/orly?username={{server.username}}&amp;password={{server.password}}"/>
+            <from id="_form2" uri="file:/home/ihsan/Documents/jboss/test_order/order2/orly"/>
             <to id="_to12" uri="direct:wrap"/>
         </route>
         <route id="ftpNamming">
-            <from id="_form3" uri="ftp://{{server.hostname}}:{{server.port}}/Documents/jboss/test_order/order2/namming?username={{server.username}}&amp;password={{server.password}}"/>
+            <from id="_form3" uri="file:/home/ihsan/Documents/jboss/test_order/order2/namming"/>
             <to id="_to3" uri="direct:wrap"/>
         </route>
         <route id="wrapRoute">
