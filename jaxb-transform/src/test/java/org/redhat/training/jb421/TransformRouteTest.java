@@ -18,8 +18,6 @@ import org.apache.camel.builder.NotifyBuilder;
 import org.apache.camel.component.mock.MockEndpoint;
 import org.apache.camel.test.blueprint.CamelBlueprintTestSupport;
 import org.junit.Test;
-import org.redhat.training.jb421.model.CatalogItem;
-import org.redhat.training.jb421.model.OrderItem;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -27,8 +25,10 @@ import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.redhat.training.jb421.model.Address;
+import com.redhat.training.jb421.model.CatalogItem;
 import com.redhat.training.jb421.model.Customer;
 import com.redhat.training.jb421.model.Order;
+import com.redhat.training.jb421.model.OrderItem;
 
 public class TransformRouteTest extends CamelBlueprintTestSupport {
 
@@ -75,15 +75,15 @@ public class TransformRouteTest extends CamelBlueprintTestSupport {
 			e.printStackTrace();
 		}
 	}
-	
+
 	@Test
-	public void testDroppingAdminOrder(){
-		try{
-			NotifyBuilder builder= new NotifyBuilder(context).whenDone(1).create();
+	public void testDroppingAdminOrder() {
+		try {
+			NotifyBuilder builder = new NotifyBuilder(context).whenDone(1).create();
 			builder.matches(2000, TimeUnit.MILLISECONDS);
-			
+
 			Order testAdminOrder = createTestOrder(true);
-			
+
 			fullfillmentEndpoint.setExpectedCount(0);
 
 			orderProcedur.sendBody(testAdminOrder);
@@ -94,7 +94,7 @@ public class TransformRouteTest extends CamelBlueprintTestSupport {
 			e.printStackTrace();
 		}
 	}
-	
+
 	private Order createTestOrder(boolean isAdmin) {
 		Address testAddress = new Address();
 		testAddress.setCity("Releigh");
@@ -102,7 +102,7 @@ public class TransformRouteTest extends CamelBlueprintTestSupport {
 		testAddress.setPostalCode("27700");
 		testAddress.setState("NC");
 		testAddress.setStreetsAddress1("100 E, Davie street");
-		
+
 		Customer testCustomer = new Customer();
 		testCustomer.setAdmin(isAdmin);
 		testCustomer.setBillingAddres(testAddress);
@@ -112,7 +112,7 @@ public class TransformRouteTest extends CamelBlueprintTestSupport {
 		testCustomer.setLastname("arif");
 		testCustomer.setUsername("ihsan");
 		testCustomer.setPassword("1234567890");
-		
+
 		CatalogItem testCatalogItem = new CatalogItem();
 		testCatalogItem.setAuthor("Ihsan Arif");
 		testCatalogItem.setCategory("Fiction");
@@ -122,31 +122,31 @@ public class TransformRouteTest extends CamelBlueprintTestSupport {
 		testCatalogItem.setPrice(new BigDecimal("15.99"));
 		testCatalogItem.setSku("123456789");
 		testCatalogItem.setTitle("Life of Pi");
-		
+
 		OrderItem testItem = new OrderItem();
 		testItem.setExtPrice(new BigDecimal("5.99"));
 		testItem.setItem(testCatalogItem);
 		testItem.setQuantity(1);
-		
+
 		Order testOrder = new Order();
 		testOrder.setDelivered(false);
 		testOrder.setOrderDate(new Date());
 		testOrder.setCustomer(testCustomer);
-		
+
 		return testOrder;
 	}
-	
+
 	private String getExpectedXmlString(Order order) throws JAXBException {
 		JAXBContext jaxbcontext = JAXBContext.newInstance(Order.class);
 		StringWriter sw = new StringWriter();
-		
+
 		Marshaller marshaller = jaxbcontext.createMarshaller();
 		marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
 		marshaller.marshal(order, sw);
-		
+
 		return sw.toString();
 	}
-	
+
 	private String getExpectedJSONString(Order order)
 			throws JsonGenerationException, JsonMappingException, IOException {
 		ObjectMapper objectMapper = new ObjectMapper();

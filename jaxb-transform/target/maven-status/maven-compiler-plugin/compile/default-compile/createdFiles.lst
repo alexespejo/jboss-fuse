@@ -1,0 +1,7 @@
+com/redhat/training/jb421/AdminOrderFilter.class
+com/redhat/training/jb421/model/CatalogItem.class
+com/redhat/training/jb421/model/Customer.class
+com/redhat/training/jb421/model/OrderItem.class
+com/redhat/training/jb421/model/Order.class
+com/redhat/training/jb421/transformRouteBuilder.class
+com/redhat/training/jb421/model/Address.class
