@@ -2,13 +2,13 @@ package com.redhat.training.jb421;
 
 
 import org.apache.camel.Exchange;
-import org.apache.camel.model.language.ExpressionDefinition;
+import org.apache.camel.Predicate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.redhat.training.jb421.model.Order;
 
-public class AdminOrderFilter extends ExpressionDefinition {
+public class AdminOrderFilter implements Predicate {
 
 	Logger log = LoggerFactory.getLogger(this.getClass());
 

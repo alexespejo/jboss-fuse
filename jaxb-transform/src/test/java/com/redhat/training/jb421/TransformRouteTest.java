@@ -1,4 +1,4 @@
-package org.redhat.training.jb421;
+package com.redhat.training.jb421;
 
 import java.io.IOException;
 import java.io.StringWriter;

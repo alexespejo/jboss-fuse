@@ -1,4 +1,4 @@
-package org.redhat.training.jb421;
+package com.redhat.training.jb421;
 
 import java.io.IOException;
 import java.io.StringWriter;
@@ -28,6 +28,7 @@ import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
+import org.springframework.test.context.transaction.TransactionalTestExecutionListener;
 
 import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.databind.JsonMappingException;
@@ -39,8 +40,7 @@ import com.redhat.training.jb421.model.Order;
 import com.redhat.training.jb421.model.OrderItem;
 
 @RunWith(CamelSpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "/META-INF/spring/bundle-context.xml" })
-@TestExecutionListeners(listeners = { DependencyInjectionTestExecutionListener.class })
+@ContextConfiguration(locations = { "/META-INF/spring/camel-context.xml" })
 public class TransformRouteTest {
 
 	Logger log = LoggerFactory.getLogger(this.getClass());

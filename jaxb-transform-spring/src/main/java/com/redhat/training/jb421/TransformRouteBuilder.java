@@ -5,7 +5,7 @@ import org.apache.camel.model.dataformat.JsonLibrary;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class transformRouteBuilder extends RouteBuilder{
+public class TransformRouteBuilder extends RouteBuilder{
 	
 	Logger log = LoggerFactory.getLogger(this.getClass());
 
