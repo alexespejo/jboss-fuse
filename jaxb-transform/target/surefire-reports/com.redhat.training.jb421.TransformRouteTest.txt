@@ -1,0 +1,10 @@
+-------------------------------------------------------------------------------
+Test set: com.redhat.training.jb421.TransformRouteTest
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 120.494 s <<< FAILURE! - in com.redhat.training.jb421.TransformRouteTest
+testDroppingAdminOrder(com.redhat.training.jb421.TransformRouteTest)  Time elapsed: 60.264 s  <<< ERROR!
+java.lang.RuntimeException: Gave up waiting for service (objectClass=org.apache.camel.CamelContext)
+
+testDroppingOrder(com.redhat.training.jb421.TransformRouteTest)  Time elapsed: 60.09 s  <<< ERROR!
+java.lang.RuntimeException: Gave up waiting for service (objectClass=org.apache.camel.CamelContext)
+

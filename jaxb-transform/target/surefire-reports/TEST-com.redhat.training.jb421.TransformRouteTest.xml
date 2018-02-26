@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="org.redhat.training.jb421.TransformRouteTest" time="120.577" tests="2" errors="2" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.redhat.training.jb421.TransformRouteTest" time="120.494" tests="2" errors="2" skipped="0" failures="0">
   <properties>
     <property name="sun.desktop" value="gnome"/>
     <property name="awt.toolkit" value="sun.awt.X11.XToolkit"/>
@@ -17,7 +17,7 @@
     <property name="user.country" value="US"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.boot.library.path" value="/opt/java-8-oracle/jre/lib/amd64"/>
-    <property name="sun.java.command" value="/home/ihsan/Documents/jboss/jaxb-transform/target/surefire/surefirebooter434005142614772112.jar /home/ihsan/Documents/jboss/jaxb-transform/target/surefire 2018-02-23T15-43-02_145-jvmRun1 surefire1286764140729305932tmp surefire_0245500655844396090tmp"/>
+    <property name="sun.java.command" value="/home/ihsan/Documents/jboss/jaxb-transform/target/surefire/surefirebooter4944336177902129469.jar /home/ihsan/Documents/jboss/jaxb-transform/target/surefire 2018-02-26T14-38-03_847-jvmRun1 surefire9124248944832680687tmp surefire_02795942502078141580tmp"/>
     <property name="surefire.test.class.path" value="/home/ihsan/Documents/jboss/jaxb-transform/target/test-classes:/home/ihsan/Documents/jboss/jaxb-transform/target/classes:/home/ihsan/.m2/repository/org/apache/camel/camel-core/2.17.0.redhat-630254/camel-core-2.17.0.redhat-630254.jar:/home/ihsan/.m2/repository/com/sun/xml/bind/jaxb-core/2.2.11/jaxb-core-2.2.11.jar:/home/ihsan/.m2/repository/com/sun/xml/bind/jaxb-impl/2.2.11.redhat-2/jaxb-impl-2.2.11.redhat-2.jar:/home/ihsan/.m2/repository/org/apache/camel/camel-blueprint/2.17.0.redhat-630254/camel-blueprint-2.17.0.redhat-630254.jar:/home/ihsan/.m2/repository/org/apache/camel/camel-core-xml/2.17.0.redhat-630254/camel-core-xml-2.17.0.redhat-630254.jar:/home/ihsan/.m2/repository/org/apache/camel/camel-core-osgi/2.17.0.redhat-630254/camel-core-osgi-2.17.0.redhat-630254.jar:/home/ihsan/.m2/repository/org/slf4j/slf4j-api/1.7.7.redhat-2/slf4j-api-1.7.7.redhat-2.jar:/home/ihsan/.m2/repository/org/slf4j/slf4j-log4j12/1.7.7.redhat-2/slf4j-log4j12-1.7.7.redhat-2.jar:/home/ihsan/.m2/repository/log4j/log4j/1.2.17.redhat-1/log4j-1.2.17.redhat-1.jar:/home/ihsan/.m2/repository/org/apache/camel/camel-test-blueprint/2.17.0.redhat-630254/camel-test-blueprint-2.17.0.redhat-630254.jar:/home/ihsan/.m2/repository/org/apache/camel/camel-test/2.17.0.redhat-630254/camel-test-2.17.0.redhat-630254.jar:/home/ihsan/.m2/repository/org/apache/camel/camel-core/2.17.0.redhat-630254/camel-core-2.17.0.redhat-630254-tests.jar:/home/ihsan/.m2/repository/org/apache/aries/proxy/org.apache.aries.proxy.api/1.0.1/org.apache.aries.proxy.api-1.0.1.jar:/home/ihsan/.m2/repository/org/apache/aries/proxy/org.apache.aries.proxy.impl/1.0.5/org.apache.aries.proxy.impl-1.0.5.jar:/home/ihsan/.m2/repository/org/apache/aries/blueprint/org.apache.aries.blueprint.api/1.0.1/org.apache.aries.blueprint.api-1.0.1.jar:/home/ihsan/.m2/repository/org/apache/aries/blueprint/org.apache.aries.blueprint.core/1.7.1/org.apache.aries.blueprint.core-1.7.1.jar:/home/ihsan/.m2/repository/org/apache/aries/quiesce/org.apache.aries.quiesce.api/1.0.0/org.apache.aries.quiesce.api-1.0.0.jar:/home/ihsan/.m2/repository/org/apache/aries/blueprint/org.apache.aries.blueprint.cm/1.0.6/org.apache.aries.blueprint.cm-1.0.6.jar:/home/ihsan/.m2/repository/org/apache/aries/org.apache.aries.util/1.1.0/org.apache.aries.util-1.1.0.jar:/home/ihsan/.m2/repository/org/apache/felix/org.apache.felix.connect/0.1.0/org.apache.felix.connect-0.1.0.jar:/home/ihsan/.m2/repository/org/ops4j/pax/swissbox/pax-swissbox-tinybundles/1.3.2/pax-swissbox-tinybundles-1.3.2.jar:/home/ihsan/.m2/repository/org/ops4j/base/ops4j-base-lang/1.5.0/ops4j-base-lang-1.5.0.jar:/home/ihsan/.m2/repository/org/ops4j/base/ops4j-base-io/1.5.0/ops4j-base-io-1.5.0.jar:/home/ihsan/.m2/repository/org/ops4j/base/ops4j-base-monitors/1.5.0/ops4j-base-monitors-1.5.0.jar:/home/ihsan/.m2/repository/org/ops4j/base/ops4j-base-store/1.5.0/ops4j-base-store-1.5.0.jar:/home/ihsan/.m2/repository/org/ops4j/pax/swissbox/pax-swissbox-bnd/1.8.2/pax-swissbox-bnd-1.8.2.jar:/home/ihsan/.m2/repository/biz/aQute/bnd/bndlib/2.4.0/bndlib-2.4.0.jar:/home/ihsan/.m2/repository/biz/aQute/bnd/biz.aQute.bndlib/2.4.1/biz.aQute.bndlib-2.4.1.jar:/home/ihsan/.m2/repository/commons-logging/commons-logging/1.2/commons-logging-1.2.jar:/home/ihsan/.m2/repository/org/apache/felix/org.apache.felix.configadmin/1.8.12/org.apache.felix.configadmin-1.8.12.jar:/home/ihsan/.m2/repository/org/apache/camel/camel-jackson/2.17.0.redhat-630254/camel-jackson-2.17.0.redhat-630254.jar:/home/ihsan/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.6.3/jackson-databind-2.6.3.jar:/home/ihsan/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.6.3/jackson-annotations-2.6.3.jar:/home/ihsan/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.6.3/jackson-core-2.6.3.jar:/home/ihsan/.m2/repository/com/fasterxml/jackson/module/jackson-module-jaxb-annotations/2.6.3/jackson-module-jaxb-annotations-2.6.3.jar:/home/ihsan/.m2/repository/org/apache/camel/camel-jaxb/2.17.0.redhat-630254/camel-jaxb-2.17.0.redhat-630254.jar:/home/ihsan/.m2/repository/junit/junit/4.11/junit-4.11.jar:/home/ihsan/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:"/>
     <property name="sun.cpu.endian" value="little"/>
     <property name="user.home" value="/home/ihsan"/>
@@ -30,7 +30,7 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment"/>
-    <property name="surefire.real.class.path" value="/home/ihsan/Documents/jboss/jaxb-transform/target/surefire/surefirebooter434005142614772112.jar"/>
+    <property name="surefire.real.class.path" value="/home/ihsan/Documents/jboss/jaxb-transform/target/surefire/surefirebooter4944336177902129469.jar"/>
     <property name="sun.boot.class.path" value="/opt/java-8-oracle/jre/lib/resources.jar:/opt/java-8-oracle/jre/lib/rt.jar:/opt/java-8-oracle/jre/lib/sunrsasign.jar:/opt/java-8-oracle/jre/lib/jsse.jar:/opt/java-8-oracle/jre/lib/jce.jar:/opt/java-8-oracle/jre/lib/charsets.jar:/opt/java-8-oracle/jre/lib/jfr.jar:/opt/java-8-oracle/jre/classes"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="1.8.0_144-b01"/>
@@ -58,7 +58,7 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="52.0"/>
   </properties>
-  <testcase name="testDroppingAdminOrder" classname="org.redhat.training.jb421.TransformRouteTest" time="60.292">
+  <testcase name="testDroppingAdminOrder" classname="com.redhat.training.jb421.TransformRouteTest" time="60.264">
     <error message="Gave up waiting for service (objectClass=org.apache.camel.CamelContext)" type="java.lang.RuntimeException">java.lang.RuntimeException: Gave up waiting for service (objectClass=org.apache.camel.CamelContext)
 </error>
     <system-out><![CDATA[[                          main] CamelBlueprintHelper           INFO  Using Blueprint XML file: /home/ihsan/Documents/jboss/jaxb-transform/target/classes/OSGI-INF/blueprint/blueprint.xml
@@ -66,30 +66,30 @@
 [                          main] Activator                      INFO  Camel activator starting
 [                          main] Activator                      INFO  Camel activator started
 [                          main] TransformRouteTest             INFO  ********************************************************************************
-[                          main] TransformRouteTest             INFO  Testing: testDroppingAdminOrder(org.redhat.training.jb421.TransformRouteTest)
+[                          main] TransformRouteTest             INFO  Testing: testDroppingAdminOrder(com.redhat.training.jb421.TransformRouteTest)
 [                          main] TransformRouteTest             INFO  ********************************************************************************
 [                          main] CamelBlueprintHelper           WARN  Test bundle headers: Bundle-ManifestVersion=2, Bundle-Name=System Bundle, Bundle-SymbolicName=org.apache.felix.connect, Bundle-Vendor=Apache Software Foundation, Bundle-Version=0.0.0
-[                          main] CamelBlueprintHelper           WARN  ServiceReference: [org.apache.camel.spi.TypeConverterLoader], bundle: org.apache.camel.camel-core [2], symbolicName: org.apache.camel.camel-core
 [                          main] CamelBlueprintHelper           WARN  ServiceReference: [org.apache.camel.spi.DataFormatResolver], bundle: org.apache.camel.camel-jaxb [33], symbolicName: org.apache.camel.camel-jaxb
-[                          main] CamelBlueprintHelper           WARN  ServiceReference: [org.apache.aries.proxy.ProxyManager], bundle: org.apache.aries.proxy.impl [13], symbolicName: org.apache.aries.proxy.impl
-[                          main] CamelBlueprintHelper           WARN  ServiceReference: [org.apache.camel.spi.TypeConverterLoader], bundle: org.apache.camel.camel-jaxb [33], symbolicName: org.apache.camel.camel-jaxb
-[                          main] CamelBlueprintHelper           WARN  ServiceReference: [org.osgi.service.startlevel.StartLevel], bundle: org.apache.felix.connect [0], symbolicName: org.apache.felix.connect
-[                          main] CamelBlueprintHelper           WARN  ServiceReference: [org.apache.camel.spi.LanguageResolver], bundle: org.apache.camel.camel-core [2], symbolicName: org.apache.camel.camel-core
-[                          main] CamelBlueprintHelper           WARN  ServiceReference: [org.apache.camel.spi.DataFormatResolver], bundle: org.apache.camel.camel-jackson [28], symbolicName: org.apache.camel.camel-jackson
-[                          main] CamelBlueprintHelper           WARN  ServiceReference: [org.apache.camel.spi.DataFormatResolver], bundle: org.apache.camel.camel-core [2], symbolicName: org.apache.camel.camel-core
-[                          main] CamelBlueprintHelper           WARN  ServiceReference: [org.apache.camel.spi.TypeConverterLoader], bundle: org.apache.camel.camel-jackson [28], symbolicName: org.apache.camel.camel-jackson
-[                          main] CamelBlueprintHelper           WARN  ServiceReference: [org.osgi.service.packageadmin.PackageAdmin], bundle: org.apache.felix.connect [0], symbolicName: org.apache.felix.connect
 [                          main] CamelBlueprintHelper           WARN  ServiceReference: [org.apache.camel.spi.ComponentResolver], bundle: org.apache.camel.camel-core [2], symbolicName: org.apache.camel.camel-core
+[                          main] CamelBlueprintHelper           WARN  ServiceReference: [org.apache.camel.spi.TypeConverterLoader], bundle: org.apache.camel.camel-core [2], symbolicName: org.apache.camel.camel-core
+[                          main] CamelBlueprintHelper           WARN  ServiceReference: [org.apache.aries.proxy.ProxyManager], bundle: org.apache.aries.proxy.impl [13], symbolicName: org.apache.aries.proxy.impl
+[                          main] CamelBlueprintHelper           WARN  ServiceReference: [org.osgi.service.packageadmin.PackageAdmin], bundle: org.apache.felix.connect [0], symbolicName: org.apache.felix.connect
+[                          main] CamelBlueprintHelper           WARN  ServiceReference: [org.apache.camel.spi.LanguageResolver], bundle: org.apache.camel.camel-core [2], symbolicName: org.apache.camel.camel-core
+[                          main] CamelBlueprintHelper           WARN  ServiceReference: [org.osgi.service.startlevel.StartLevel], bundle: org.apache.felix.connect [0], symbolicName: org.apache.felix.connect
+[                          main] CamelBlueprintHelper           WARN  ServiceReference: [org.apache.camel.spi.TypeConverterLoader], bundle: org.apache.camel.camel-jackson [28], symbolicName: org.apache.camel.camel-jackson
+[                          main] CamelBlueprintHelper           WARN  ServiceReference: [org.apache.camel.spi.DataFormatResolver], bundle: org.apache.camel.camel-core [2], symbolicName: org.apache.camel.camel-core
+[                          main] CamelBlueprintHelper           WARN  ServiceReference: [org.apache.camel.spi.DataFormatResolver], bundle: org.apache.camel.camel-jackson [28], symbolicName: org.apache.camel.camel-jackson
+[                          main] CamelBlueprintHelper           WARN  ServiceReference: [org.apache.camel.spi.TypeConverterLoader], bundle: org.apache.camel.camel-jaxb [33], symbolicName: org.apache.camel.camel-jaxb
 [                          main] TransformRouteTest             INFO  ********************************************************************************
-[                          main] TransformRouteTest             INFO  Testing done: testDroppingAdminOrder(org.redhat.training.jb421.TransformRouteTest)
-[                          main] TransformRouteTest             INFO  Took: 1 minute (60278 millis)
+[                          main] TransformRouteTest             INFO  Testing done: testDroppingAdminOrder(com.redhat.training.jb421.TransformRouteTest)
+[                          main] TransformRouteTest             INFO  Took: 1 minute (60257 millis)
 [                          main] TransformRouteTest             INFO  ********************************************************************************
 [                          main] Activator                      INFO  Camel activator stopping
 [                          main] Activator                      INFO  Camel activator stopped
-[                          main] CamelBlueprintHelper           INFO  Deleting work directory target/bundles/1519375388065
+[                          main] CamelBlueprintHelper           INFO  Deleting work directory target/bundles/1519630689666
 ]]></system-out>
   </testcase>
-  <testcase name="testDroppingOrder" classname="org.redhat.training.jb421.TransformRouteTest" time="60.107">
+  <testcase name="testDroppingOrder" classname="com.redhat.training.jb421.TransformRouteTest" time="60.09">
     <error message="Gave up waiting for service (objectClass=org.apache.camel.CamelContext)" type="java.lang.RuntimeException">java.lang.RuntimeException: Gave up waiting for service (objectClass=org.apache.camel.CamelContext)
 </error>
     <system-out><![CDATA[[                          main] CamelBlueprintHelper           INFO  Using Blueprint XML file: /home/ihsan/Documents/jboss/jaxb-transform/target/classes/OSGI-INF/blueprint/blueprint.xml
@@ -97,27 +97,27 @@
 [                          main] Activator                      INFO  Camel activator starting
 [                          main] Activator                      INFO  Camel activator started
 [                          main] TransformRouteTest             INFO  ********************************************************************************
-[                          main] TransformRouteTest             INFO  Testing: testDroppingOrder(org.redhat.training.jb421.TransformRouteTest)
+[                          main] TransformRouteTest             INFO  Testing: testDroppingOrder(com.redhat.training.jb421.TransformRouteTest)
 [                          main] TransformRouteTest             INFO  ********************************************************************************
 [                          main] CamelBlueprintHelper           WARN  Test bundle headers: Bundle-ManifestVersion=2, Bundle-Name=System Bundle, Bundle-SymbolicName=org.apache.felix.connect, Bundle-Vendor=Apache Software Foundation, Bundle-Version=0.0.0
+[                          main] CamelBlueprintHelper           WARN  ServiceReference: [org.apache.camel.spi.TypeConverterLoader], bundle: org.apache.camel.camel-jaxb [33], symbolicName: org.apache.camel.camel-jaxb
 [                          main] CamelBlueprintHelper           WARN  ServiceReference: [org.apache.camel.spi.DataFormatResolver], bundle: org.apache.camel.camel-jaxb [33], symbolicName: org.apache.camel.camel-jaxb
-[                          main] CamelBlueprintHelper           WARN  ServiceReference: [org.apache.camel.spi.TypeConverterLoader], bundle: org.apache.camel.camel-jackson [28], symbolicName: org.apache.camel.camel-jackson
-[                          main] CamelBlueprintHelper           WARN  ServiceReference: [org.apache.camel.spi.TypeConverterLoader], bundle: org.apache.camel.camel-core [2], symbolicName: org.apache.camel.camel-core
-[                          main] CamelBlueprintHelper           WARN  ServiceReference: [org.osgi.service.packageadmin.PackageAdmin], bundle: org.apache.felix.connect [0], symbolicName: org.apache.felix.connect
-[                          main] CamelBlueprintHelper           WARN  ServiceReference: [org.apache.camel.spi.DataFormatResolver], bundle: org.apache.camel.camel-core [2], symbolicName: org.apache.camel.camel-core
-[                          main] CamelBlueprintHelper           WARN  ServiceReference: [org.apache.aries.proxy.ProxyManager], bundle: org.apache.aries.proxy.impl [13], symbolicName: org.apache.aries.proxy.impl
-[                          main] CamelBlueprintHelper           WARN  ServiceReference: [org.osgi.service.startlevel.StartLevel], bundle: org.apache.felix.connect [0], symbolicName: org.apache.felix.connect
 [                          main] CamelBlueprintHelper           WARN  ServiceReference: [org.apache.camel.spi.ComponentResolver], bundle: org.apache.camel.camel-core [2], symbolicName: org.apache.camel.camel-core
 [                          main] CamelBlueprintHelper           WARN  ServiceReference: [org.apache.camel.spi.LanguageResolver], bundle: org.apache.camel.camel-core [2], symbolicName: org.apache.camel.camel-core
 [                          main] CamelBlueprintHelper           WARN  ServiceReference: [org.apache.camel.spi.DataFormatResolver], bundle: org.apache.camel.camel-jackson [28], symbolicName: org.apache.camel.camel-jackson
-[                          main] CamelBlueprintHelper           WARN  ServiceReference: [org.apache.camel.spi.TypeConverterLoader], bundle: org.apache.camel.camel-jaxb [33], symbolicName: org.apache.camel.camel-jaxb
+[                          main] CamelBlueprintHelper           WARN  ServiceReference: [org.osgi.service.packageadmin.PackageAdmin], bundle: org.apache.felix.connect [0], symbolicName: org.apache.felix.connect
+[                          main] CamelBlueprintHelper           WARN  ServiceReference: [org.apache.aries.proxy.ProxyManager], bundle: org.apache.aries.proxy.impl [13], symbolicName: org.apache.aries.proxy.impl
+[                          main] CamelBlueprintHelper           WARN  ServiceReference: [org.apache.camel.spi.TypeConverterLoader], bundle: org.apache.camel.camel-jackson [28], symbolicName: org.apache.camel.camel-jackson
+[                          main] CamelBlueprintHelper           WARN  ServiceReference: [org.osgi.service.startlevel.StartLevel], bundle: org.apache.felix.connect [0], symbolicName: org.apache.felix.connect
+[                          main] CamelBlueprintHelper           WARN  ServiceReference: [org.apache.camel.spi.DataFormatResolver], bundle: org.apache.camel.camel-core [2], symbolicName: org.apache.camel.camel-core
+[                          main] CamelBlueprintHelper           WARN  ServiceReference: [org.apache.camel.spi.TypeConverterLoader], bundle: org.apache.camel.camel-core [2], symbolicName: org.apache.camel.camel-core
 [                          main] TransformRouteTest             INFO  ********************************************************************************
-[                          main] TransformRouteTest             INFO  Testing done: testDroppingOrder(org.redhat.training.jb421.TransformRouteTest)
-[                          main] TransformRouteTest             INFO  Took: 1 minute (60100 millis)
+[                          main] TransformRouteTest             INFO  Testing done: testDroppingOrder(com.redhat.training.jb421.TransformRouteTest)
+[                          main] TransformRouteTest             INFO  Took: 1 minute (60089 millis)
 [                          main] TransformRouteTest             INFO  ********************************************************************************
 [                          main] Activator                      INFO  Camel activator stopping
 [                          main] Activator                      INFO  Camel activator stopped
-[                          main] CamelBlueprintHelper           INFO  Deleting work directory target/bundles/1519375448330
+[                          main] CamelBlueprintHelper           INFO  Deleting work directory target/bundles/1519630749908
 ]]></system-out>
   </testcase>
 </testsuite>

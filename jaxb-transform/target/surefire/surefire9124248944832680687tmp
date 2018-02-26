@@ -1,7 +1,7 @@
 #surefire
-#Fri Feb 23 15:16:50 WIB 2018
-tc.0=org.redhat.training.jb421.TransformRouteTest
-pluginPid=6882
+#Mon Feb 26 14:38:09 WIB 2018
+tc.0=com.redhat.training.jb421.TransformRouteTest
+pluginPid=27826
 classPathUrl.0=/home/ihsan/Documents/jboss/jaxb-transform/target/test-classes
 classPathUrl.1=/home/ihsan/Documents/jboss/jaxb-transform/target/classes
 classPathUrl.2=/home/ihsan/.m2/repository/org/apache/camel/camel-core/2.17.0.redhat-630254/camel-core-2.17.0.redhat-630254.jar
