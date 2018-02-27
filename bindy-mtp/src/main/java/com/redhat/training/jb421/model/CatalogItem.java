@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 import org.apache.camel.dataformat.bindy.annotation.CsvRecord;
 import org.apache.camel.dataformat.bindy.annotation.DataField;
 
-@CsvRecord(separator = ",", crlf = "WINDOWS")
+@CsvRecord(separator = ",", crlf = "UNIX")
 public class CatalogItem implements Serializable {
 
 	private static final long serialVersionUID = 1L;

@@ -8,7 +8,7 @@ import com.redhat.training.jb421.model.CatalogItem;
 
 public class TransformRouteBuilder extends RouteBuilder {
 
-	public static String SRC_FOLDER = "/home/student/jb421/solutions/bindy-mtp/items/incoming";
+	public static String SRC_FOLDER = "/home/ihsan/jboss/bindy-mtp/items/incoming";
 
 	BindyCsvDataFormat bindy = new BindyCsvDataFormat(CatalogItem.class);
 
