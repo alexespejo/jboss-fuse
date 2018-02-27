@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 import org.apache.camel.dataformat.bindy.annotation.CsvRecord;
 import org.apache.camel.dataformat.bindy.annotation.DataField;
 
-@CsvRecord(separator = ",", crlf = "UNIX")
+@CsvRecord(separator = ",", crlf = "WINDOWS")
 public class CatalogItem implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -14,29 +14,27 @@ public class CatalogItem implements Serializable {
 	@DataField(pos = 1)
 	private Integer id;
 	@DataField(pos = 2)
-	private String author;
-	@DataField(pos = 3)
-	private String category;
-	@DataField(pos = 4)
-	private String description;
-	@DataField(pos = 5)
-	private String imagePath;
-	@DataField(pos = 6)
-	private Boolean newItem;
-	@DataField(pos = 7,decimalSeparator=".",precision=2)
-	private BigDecimal price;
-	@DataField(pos = 8)
 	private String sku;
-	@DataField(pos = 9)
+	@DataField(pos = 3)
 	private String title;
+	@DataField(pos = 4, decimalSeparator = ".", precision = 2)
+	private BigDecimal price;
+	@DataField(pos = 5)
+	private String description;
+	@DataField(pos = 6)
+	private String author;
+	@DataField(pos = 7)
+	private String imagePath;
+	@DataField(pos = 8)
+	private String category;
+	@DataField(pos = 9)
+	private Boolean newItem;
 
 	public CatalogItem() {
-		super();
 	}
 
 	public CatalogItem(String author, String category, String description, String imagePath, Boolean newItem,
 			BigDecimal price, String sku, String title) {
-		super();
 		this.author = author;
 		this.category = category;
 		this.description = description;

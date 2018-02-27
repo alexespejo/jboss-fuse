@@ -8,14 +8,15 @@ import com.redhat.training.jb421.model.CatalogItem;
 
 public class TransformRouteBuilder extends RouteBuilder {
 
-	public static String SRC_FOLDER = "/home/ihsan/jboss/bindy-mtp/items/incoming";
+	public static String SRC_FOLDER = "/home/ihsan/Documents/jboss/bindy-mtp/items/incoming";
 
 	BindyCsvDataFormat bindy = new BindyCsvDataFormat(CatalogItem.class);
 
 	@Override
 	public void configure() throws Exception {
-		from("file:" + SRC_FOLDER).transform(body().regexReplaceAll("\n", "\r\n")).unmarshal(bindy)
-				.wireTap("direct:loggingSystem").to("mock:inventorySystem");
+		from("file:" + SRC_FOLDER).log("${body}");
+//		.transform(body().regexReplaceAll("\n", "\r\n")).unmarshal(bindy)
+//				.wireTap("direct:loggingSystem").to("mock:inventorySystem");
 
 		from("direct:loggingSystem").split().simple("${body}").convertBodyTo(String.class).log("${body}")
 				.to("mock:newItemsFeed");
