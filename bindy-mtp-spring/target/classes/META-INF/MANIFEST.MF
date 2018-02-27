@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-Bnd-LastModified: 1519700895404
+Bnd-LastModified: 1519703418293
 Build-Jdk: 1.8.0_144
 Built-By: ihsan
 Bundle-Description: Empty Camel Blueprint Example
