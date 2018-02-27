@@ -14,11 +14,11 @@ public class TransformRouteBuilder extends RouteBuilder {
 
 	@Override
 	public void configure() throws Exception {
-		from("file:" + SRC_FOLDER).log("${body}");
+		from("file:/home/ihsan/Documents/jboss/bindy-mtp/items/incoming").log("logging");
 //		.transform(body().regexReplaceAll("\n", "\r\n")).unmarshal(bindy)
 //				.wireTap("direct:loggingSystem").to("mock:inventorySystem");
 
-		from("direct:loggingSystem").split().simple("${body}").convertBodyTo(String.class).log("${body}")
-				.to("mock:newItemsFeed");
+//		from("direct:loggingSystem").split().simple("${body}").convertBodyTo(String.class).log("${body}")
+//				.to("mock:newItemsFeed");
 	}
 }

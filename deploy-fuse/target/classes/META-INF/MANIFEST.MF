@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-Bnd-LastModified: 1519272237522
+Bnd-LastModified: 1519712004629
 Build-Jdk: 1.8.0_144
 Built-By: ihsan
 Bundle-Blueprint: OSGI-INF/blueprint/blueprint-route.xml
@@ -10,8 +10,8 @@ Bundle-Name: Empty Camel Blueprint Example [routes-jbds]
 Bundle-SymbolicName: routes-jbds
 Bundle-Version: 1.0.0
 Created-By: Apache Maven Bundle Plugin
-Export-Package: com.redhat.training.jb421;uses:="org.apache.camel";versi
- on="1.0.0"
+Export-Package: com.redhat.training.jb421;version="1.0.0";uses:="org.apa
+ che.camel"
 Import-Package: org.apache.activemq,org.apache.activemq.camel.component;
  version="[5.11,6)",org.apache.camel;version="[2.17,3)",org.apache.camel
  .builder.xml;version="[2.17,3)",org.osgi.service.blueprint;version="[1.

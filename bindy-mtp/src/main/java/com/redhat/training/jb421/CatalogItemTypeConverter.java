@@ -8,10 +8,10 @@ import com.redhat.training.jb421.model.CatalogItem;
 public class CatalogItemTypeConverter {
 
 	@Converter
-	public String toNewItemMessage(CatalogItem item){
-		if(item.getNewItem()){
-			return "New Item! "+item.getTitle()+" is new to the store.";
-		}else{
+	public String toNewItemMessage(CatalogItem item) {
+		if (item.getNewItem()) {
+			return "New Item! " + item.getTitle() + " is new to the store.";
+		} else {
 			return null;
 		}
 	}
