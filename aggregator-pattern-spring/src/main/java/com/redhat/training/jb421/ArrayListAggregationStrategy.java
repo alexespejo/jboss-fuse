@@ -4,30 +4,29 @@ import java.util.ArrayList;
 
 import org.apache.camel.Exchange;
 import org.apache.camel.processor.aggregate.AggregationStrategy;
+import org.apache.camel.Message;
 
-public class ArrayListAggregationStrategy implements AggregationStrategy{
+public class ArrayListAggregationStrategy implements AggregationStrategy {
 
-//	public public ArrayListAggregationStrategy() {
-//		super();
-//	}
-	
-	@Override
+	public ArrayListAggregationStrategy() {
+		super();
+	}
+
 	public Exchange aggregate(Exchange oldExchange, Exchange newExchange) {
-		org.apache.camel.Message newIn = newExchange.getIn();
+		Message newIn = newExchange.getIn();
 		Object newBody = newIn.getBody();
 		ArrayList<Object> list = null;
-		if(oldExchange == null){
+		if (oldExchange == null) {
 			list = new ArrayList<Object>();
 			list.add(newBody);
 			newIn.setBody(list);
 			return newExchange;
-		}else{
-			org.apache.camel.Message in = oldExchange.getIn();
+		} else {
+			Message in = oldExchange.getIn();
 			list = in.getBody(ArrayList.class);
 			list.add(newBody);
 			return oldExchange;
 		}
-		
 	}
 
 }

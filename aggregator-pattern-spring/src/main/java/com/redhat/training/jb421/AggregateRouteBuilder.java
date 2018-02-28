@@ -14,12 +14,20 @@ public class AggregateRouteBuilder extends RouteBuilder {
 
 	@Override
 	public void configure() throws Exception {
-		from("file:/" + SRC_FOLDER).split().tokenize("\n").streaming().unmarshal(bindy)
-				.aggregate(constant(true), new ArrayListAggregationStrategy()).completionSize(25).completeAllOnStop()
-				.process(new BatchXMLProcessor()).wireTap("direct:orderLogger")
-				.to("file:/" + OUTPUT_FOLDER + "?fileName=output.xml&fileExist=Append", "mock:result");
+		from("file://" + SRC_FOLDER).split()
+		.tokenize("\n")
+		.streaming()
+		.unmarshal(bindy)
+		.aggregate(constant(true), new ArrayListAggregationStrategy())
+		.completionSize(25)
+		.completeAllOnStop()
+		.process(new BatchXMLProcessor())
+		.wireTap("direct:orderLogger")
+		.to("file://" + OUTPUT_FOLDER + "?fileName=output.xml&fileExist=Append", "mock:result");
 
-		from("direct:orderLogger").split().tokenizeXML("order").log("${body}");
+		from("direct:orderLogger")
+		.split()
+		.tokenizeXML("order")
+		.log("${body}");
 	}
-
 }
