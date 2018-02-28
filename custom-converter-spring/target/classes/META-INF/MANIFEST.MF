@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-Bnd-LastModified: 1519716981339
+Bnd-LastModified: 1519788587816
 Build-Jdk: 1.8.0_144
 Built-By: ihsan
 Bundle-Description: Empty Camel Blueprint Example
@@ -9,13 +9,15 @@ Bundle-Name: Empty Camel Spring Example [custom-converter-spring]
 Bundle-SymbolicName: custom-converter-spring
 Bundle-Version: 1.0.0.SNAPSHOT
 Created-By: Apache Maven Bundle Plugin
-Export-Package: com.redhat.training.jb421;version="1.0.0";uses:="com.red
- hat.training.jb421.model,org.apache.camel,org.apache.camel.builder",com
- .redhat.training.jb421.model;version="1.0.0";uses:="org.apache.camel.da
- taformat.bindy.annotation"
-Import-Package: com.google.gson,com.redhat.training.jb421.model;version=
- "[1.0,2)",org.apache.camel;version="[2.17,3)",org.apache.camel.builder;
+Export-Package: com.redhat.training.jb421;uses:="com.redhat.training.jb4
+ 21.model,org.apache.camel,org.apache.camel.builder";version="1.0.0",com
+ .redhat.training.jb421.model;uses:="org.apache.camel.dataformat.bindy.a
+ nnotation";version="1.0.0"
+Import-Package: com.google.gson;version="[2.6,3)",com.redhat.training.jb
+ 421.model,org.apache.camel;version="[2.17,3)",org.apache.camel.builder;
  version="[2.17,3)",org.apache.camel.dataformat.bindy.annotation;version
- ="[2.17,3)",org.apache.camel.model;version="[2.17,3)"
+ ="[2.17,3)",org.apache.camel.dataformat.bindy.csv;version="[2.17,3)",or
+ g.apache.camel.model;version="[2.17,3)",org.apache.camel.spi;version="[
+ 2.17,3)"
 Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.8))"
 Tool: Bnd-3.2.0.201605172007

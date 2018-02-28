@@ -1,41 +1,61 @@
 package com.redhat.training.jb421.model;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
-import com.redhat.training.jb421.model.Address;
 
+import org.apache.camel.dataformat.bindy.annotation.DataField;
+import org.apache.camel.dataformat.bindy.annotation.Link;
+
+@Link
 public class Customer implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-
+	@DataField(pos = 5)
 	private Integer id;
-	private String firstname;
-	private String lastname;
+	@DataField(pos = 6)
+	private String firstName;
+	@DataField(pos = 7)
+	private String lastName;
+	@DataField(pos = 8)
 	private String username;
+	@DataField(pos = 9)
 	private String password;
+	@DataField(pos = 10)
 	private String email;
+	@DataField(pos = 11)
 	private Boolean admin;
-	private Address BillingAddres;
-	private Address shippingAddress;
-	private Set<Order> orders = new HashSet<Order>();
+	@DataField(pos = 12)
+	private String streetAddress1;
+	@DataField(pos = 13)
+	private String streetAddress2;
+	@DataField(pos = 14)
+	private String streetAddress3;
+	@DataField(pos = 15)
+	private String city;
+	@DataField(pos = 16)
+	private String state;
+	@DataField(pos = 17)
+	private String postalCode;
+	@DataField(pos = 18)
+	private String country;
 
 	public Customer() {
-		super();
+
 	}
 
-	public Customer(Integer id, String firstname, String lastname, String username, String password, String email) {
-		this.firstname = firstname;
-		this.lastname = lastname;
+	public Customer(String firstName, String lastName, String username, String password, String email) {
+
+		this.firstName = firstName;
+		this.lastName = lastName;
 		this.username = username;
 		this.password = password;
 		this.email = email;
 		this.admin = false;
 	}
-	
-	public Customer(Integer id, String firstname, String lastname, String username, String password, String email, Boolean admin) {
-		this.firstname = firstname;
-		this.lastname = lastname;
+
+	public Customer(String firstName, String lastName, String username, String password, String email, Boolean admin) {
+
+		this.firstName = firstName;
+		this.lastName = lastName;
 		this.username = username;
 		this.password = password;
 		this.email = email;
@@ -50,20 +70,20 @@ public class Customer implements Serializable {
 		this.id = id;
 	}
 
-	public String getFirstname() {
-		return firstname;
+	public String getFirstName() {
+		return firstName;
 	}
 
-	public void setFirstname(String firstname) {
-		this.firstname = firstname;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
 
-	public String getLastname() {
-		return lastname;
+	public String getLastName() {
+		return lastName;
 	}
 
-	public void setLastname(String lastname) {
-		this.lastname = lastname;
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 
 	public String getUsername() {
@@ -97,31 +117,63 @@ public class Customer implements Serializable {
 	public void setAdmin(Boolean admin) {
 		this.admin = admin;
 	}
-	
-	public Address getBillingAddres() {
-		return BillingAddres;
+
+	public String getStreetAddress1() {
+		return streetAddress1;
 	}
 
-	public void setBillingAddres(Address billingAddres) {
-		BillingAddres = billingAddres;
+	public void setStreetAddress1(String streetAddress1) {
+		this.streetAddress1 = streetAddress1;
 	}
 
-	public Address getShippingAddress() {
-		return shippingAddress;
+	public String getStreetAddress2() {
+		return streetAddress2;
 	}
 
-	public void setShippingAddress(Address shippingAddress) {
-		this.shippingAddress = shippingAddress;
+	public void setStreetAddress2(String streetAddress2) {
+		this.streetAddress2 = streetAddress2;
 	}
 
-	public Set<Order> getOrders() {
-		return orders;
+	public String getStreetAddress3() {
+		return streetAddress3;
 	}
 
-	public void setOrders(Set<Order> orders) {
-		this.orders = orders;
+	public void setStreetAddress3(String streetAddress3) {
+		this.streetAddress3 = streetAddress3;
 	}
-	
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
+	public String getPostalCode() {
+		return postalCode;
+	}
+
+	public void setPostalCode(String postalCode) {
+		this.postalCode = postalCode;
+	}
+
+	public String getCountry() {
+		return country;
+	}
+
+	public void setCountry(String country) {
+		this.country = country;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -133,18 +185,27 @@ public class Customer implements Serializable {
 
 	@Override
 	public boolean equals(Object obj) {
-		if(this == obj)
+		if (this == obj)
 			return true;
-		if(obj == null)
+		if (obj == null)
 			return false;
-		if(getClass() != obj.getClass())
+		if (getClass() != obj.getClass())
 			return false;
 		Customer other = (Customer) obj;
-		if(id == null){
-			if(other.username != null)
+		if (username == null) {
+			if (other.username != null)
 				return false;
-		}else if(!username.equals(other.username))
+		} else if (!username.equals(other.username))
 			return false;
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return "Customer [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", username=" + username
+				+ ", password=" + password + ", email=" + email + ", admin=" + admin + ", streetAddress1="
+				+ streetAddress1 + ", streetAddress2=" + streetAddress2 + ", streetAddress3=" + streetAddress3
+				+ ", city=" + city + ", state=" + state + ", postalCode=" + postalCode + ", country=" + country + "]";
+	}
+
 }

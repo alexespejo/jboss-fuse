@@ -1,0 +1,5 @@
+com/redhat/training/jb421/model/Customer.class
+com/redhat/training/jb421/model/Order.class
+com/redhat/training/jb421/OrderJSONTypeConverter.class
+com/redhat/training/jb421/TransformRouteBuilder.class
+com/redhat/training/jb421/model/Address.class
