@@ -1,0 +1,8 @@
+/home/ihsan/Documents/jboss/aggregate-messages/src/main/java/com/redhat/training/jb421/AggregateRouteBuilder.java
+/home/ihsan/Documents/jboss/aggregate-messages/src/main/java/com/redhat/training/jb421/model/OrderBatch.java
+/home/ihsan/Documents/jboss/aggregate-messages/src/main/java/com/redhat/training/jb421/model/Order.java
+/home/ihsan/Documents/jboss/aggregate-messages/src/main/java/com/redhat/training/jb421/model/CatalogItem.java
+/home/ihsan/Documents/jboss/aggregate-messages/src/main/java/com/redhat/training/jb421/model/Customer.java
+/home/ihsan/Documents/jboss/aggregate-messages/src/main/java/com/redhat/training/jb421/model/Address.java
+/home/ihsan/Documents/jboss/aggregate-messages/src/main/java/com/redhat/training/jb421/model/OrderItem.java
+/home/ihsan/Documents/jboss/aggregate-messages/src/main/java/com/redhat/training/jb421/OrderBatchAggregationStrategy.java

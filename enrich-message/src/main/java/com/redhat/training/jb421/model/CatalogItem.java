@@ -3,26 +3,56 @@ package com.redhat.training.jb421.model;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
+
+@Entity
+@XmlRootElement(name = "catalogItem")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class CatalogItem implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@XmlElement
 	private Integer id;
+	@XmlElement
 	private String sku;
+	@XmlElement
 	private String title;
+	@XmlElement
 	private BigDecimal price;
+	@XmlElement
 	private String description;
+	@XmlElement
 	private String author;
+	@XmlElement
 	private String imagePath;
+	@XmlElement
 	private String category;
+	@XmlElement
 	private Boolean newItem;
+	@ManyToOne
+	@JoinColumn(name = "pub_id")
+	@XmlTransient
+	private Publisher publisher;
 
 	public CatalogItem() {
 
 	}
 
 	public CatalogItem(String sku, String title, BigDecimal price, String description, String author, String imagePath,
-			String category, Boolean newItem) {
+			String category, Boolean newItem, Publisher publisher) {
 
 		this.sku = sku;
 		this.title = title;
@@ -32,6 +62,7 @@ public class CatalogItem implements Serializable {
 		this.imagePath = imagePath;
 		this.category = category;
 		this.newItem = newItem;
+		this.publisher = publisher;
 	}
 
 	public String getCategory() {

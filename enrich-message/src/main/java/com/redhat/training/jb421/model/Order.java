@@ -2,20 +2,59 @@ package com.redhat.training.jb421.model;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
+import javax.xml.bind.annotation.XmlRootElement;
+
+@Entity
+@Table(name = "order_")
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Order implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	private Date orderDate = new Date();
 	private BigDecimal discount;
-	private Boolean delivered = false;
+	private Boolean delivered=false;
+	
+	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name = "cust_id")
 	private Customer customer;
-	private List<OrderItem> orderItems = new ArrayList<OrderItem>();
+	
+	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	@JoinColumn(name="promo_id")
+	private Set<Promotion> promoCode;
+	
+	@OneToMany(cascade = CascadeType.ALL,fetch=FetchType.EAGER)
+	@JoinColumn(name = "order_id")
+	@XmlElementWrapper(name="orderItems")
+	@XmlElement(name="orderItem")
+	private Set<OrderItem> orderItems = new HashSet<OrderItem>();
+	
+	@OneToOne(cascade = CascadeType.ALL,fetch=FetchType.EAGER)
+	@JoinColumn(name = "payment_id")
+	private Payment payment;
 
 	public Customer getCustomer() {
 		return customer;
@@ -25,11 +64,19 @@ public class Order implements Serializable {
 		this.customer = customer;
 	}
 
+	public Set<Promotion> getPromoCode() {
+		return promoCode;
+	}
+
+	public void setPromoCode(Set<Promotion> promoCode) {
+		this.promoCode = promoCode;
+	}
+
 	public Integer getId() {
 		return id;
 	}
 
-	public List<OrderItem> getOrderItems() {
+	public Set<OrderItem> getOrderItems() {
 		return orderItems;
 	}
 
@@ -39,6 +86,14 @@ public class Order implements Serializable {
 
 	public void setOrderDate(Date orderDate) {
 		this.orderDate = orderDate;
+	}
+
+	public Payment getPayment() {
+		return payment;
+	}
+
+	public void setPayment(Payment payment) {
+		this.payment = payment;
 	}
 
 	public BigDecimal getDiscount() {
@@ -59,67 +114,6 @@ public class Order implements Serializable {
 
 	public void deliver() {
 		setDelivered(true);
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((customer == null) ? 0 : customer.hashCode());
-		result = prime * result + ((delivered == null) ? 0 : delivered.hashCode());
-		result = prime * result + ((discount == null) ? 0 : discount.hashCode());
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((orderItems == null) ? 0 : orderItems.hashCode());
-		result = prime * result + ((orderDate == null) ? 0 : orderDate.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Order other = (Order) obj;
-		if (customer == null) {
-			if (other.customer != null)
-				return false;
-		} else if (!customer.equals(other.customer))
-			return false;
-		if (delivered == null) {
-			if (other.delivered != null)
-				return false;
-		} else if (!delivered.equals(other.delivered))
-			return false;
-		if (discount == null) {
-			if (other.discount != null)
-				return false;
-		} else if (!discount.equals(other.discount))
-			return false;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		if (orderItems == null) {
-			if (other.orderItems != null)
-				return false;
-		} else if (!orderItems.equals(other.orderItems))
-			return false;
-		if (orderDate == null) {
-			if (other.orderDate != null)
-				return false;
-		} else if (!orderDate.equals(other.orderDate))
-			return false;
-		return true;
-	}
-
-	@Override
-	public String toString() {
-		return "Order [id=" + id + ", orderDate=" + orderDate + ", discount=" + discount + ", delivered=" + delivered
-				+ ", customer=" + customer + ", items=" + orderItems + "]";
 	}
 
 }
