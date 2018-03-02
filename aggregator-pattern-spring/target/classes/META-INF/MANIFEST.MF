@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bnd-LastModified: 1519957467826
+Build-Jdk: 1.8.0_131
+Built-By: ihsan
+Bundle-Description: Empty Camel Blueprint Example
+Bundle-License: http://www.apache.org/licenses/LICENSE-2.0.html
+Bundle-ManifestVersion: 2
+Bundle-Name: Empty Camel Spring Example[aggregator-pattern-spring]
+Bundle-SymbolicName: aggregator-pattern-spring
+Bundle-Version: 1.0.0.SNAPSHOT
+Created-By: Apache Maven Bundle Plugin
+Export-Package: com.redhat.training.jb421;version="1.0.0",com.redhat.tra
+ ining.jb421.model;uses:="javax.xml.bind.annotation";version="1.0.0"
+Import-Package: javax.xml.bind.annotation
+Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.8))"
+Tool: Bnd-3.2.0.201605172007
