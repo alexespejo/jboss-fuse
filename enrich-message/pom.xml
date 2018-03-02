@@ -70,6 +70,10 @@
 			<groupId>org.apache.camel</groupId>
 			<artifactId>camel-http</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+		</dependency>
 		<!-- TODO Add camel-jdbc dependency here -->
 		<dependency>
 			<groupId>org.apache.camel</groupId>

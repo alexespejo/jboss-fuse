@@ -41,25 +41,29 @@ public class Customer implements Serializable {
 	private Set<Order> orders = new HashSet<Order>();
 
 	public Customer() {
-		super();
-		// TODO Auto-generated constructor stub
+
 	}
 
-	public Customer(String firstName, String lastName, String username, String password, String email) {
-		super();
+	public Customer(String firstName, String lastName, String username,
+			String password, String email) {
+
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.username = username;
 		this.password = password;
 		this.email = email;
+		this.admin = false;
 	}
 
-	public Integer getId() {
-		return id;
-	}
+	public Customer(String firstName, String lastName, String username,
+			String password, String email, Boolean admin) {
 
-	public void setId(Integer id) {
-		this.id = id;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.username = username;
+		this.password = password;
+		this.email = email;
+		this.admin = admin;
 	}
 
 	public String getFirstName() {
@@ -94,22 +98,6 @@ public class Customer implements Serializable {
 		this.password = password;
 	}
 
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public Boolean isAdmin() {
-		return admin;
-	}
-
-	public void setAdmin(Boolean admin) {
-		this.admin = admin;
-	}
-
 	public Address getBillingAddress() {
 		return billingAddress;
 	}
@@ -126,20 +114,30 @@ public class Customer implements Serializable {
 		this.shippingAddress = shippingAddress;
 	}
 
-	public Set<Order> getOrders() {
-		return orders;
+	public Integer getId() {
+		return id;
 	}
 
-	public void setOrders(Set<Order> orders) {
-		this.orders = orders;
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public Set<Order> getOrders() {
+		return orders;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((password == null) ? 0 : password.hashCode());
-		result = prime * result + ((username == null) ? 0 : username.hashCode());
+		result = prime * result
+				+ ((password == null) ? 0 : password.hashCode());
+		result = prime * result
+				+ ((username == null) ? 0 : username.hashCode());
 		return result;
 	}
 
@@ -158,6 +156,14 @@ public class Customer implements Serializable {
 		} else if (!username.equals(other.username))
 			return false;
 		return true;
+	}
+
+	public boolean isAdmin() {
+		return admin;
+	}
+
+	public void setAdmin(boolean admin) {
+		this.admin = admin;
 	}
 
 }

@@ -23,7 +23,7 @@ public class VendorLookupProcessor implements Processor {
 		StringBuilder query = new StringBuilder("select sku,vendor_id,id from CatalogItem where id in (");
 		
 		for(OrderItem order: incomingOrder.getOrderItems()){
-			query.append(order.getItem().getId());
+			query.append(order.getCatalogItem().getId());
 			query.append(",");
 		}
 		

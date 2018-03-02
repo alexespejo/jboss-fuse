@@ -3,16 +3,39 @@ package com.redhat.training.jb421.model;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Transient;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
+@Entity
 public class OrderItem implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	private Integer quantity;
 	private BigDecimal extPrice;
-	private CatalogItem item;
+	
+	@ManyToOne
+	@JoinColumn(name = "item_id")
+	private CatalogItem catalogItem;
+
+	@Transient	
 	private Integer vendorId;
-	private String Sku;
+	
+	@Transient
+	private String sku;
 
 	public Integer getQuantity() {
 		return quantity;
@@ -30,67 +53,16 @@ public class OrderItem implements Serializable {
 		this.extPrice = extPrice;
 	}
 
-	public CatalogItem getItem() {
-		return item;
+	public CatalogItem getCatalogItem() {
+		return catalogItem;
 	}
 
-	public void setItem(CatalogItem item) {
-		this.item = item;
+	public void setCatalogItem(CatalogItem catalogItem) {
+		this.catalogItem = catalogItem;
 	}
 
 	public Integer getId() {
 		return id;
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((extPrice == null) ? 0 : extPrice.hashCode());
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((item == null) ? 0 : item.hashCode());
-		result = prime * result + ((quantity == null) ? 0 : quantity.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		OrderItem other = (OrderItem) obj;
-		if (extPrice == null) {
-			if (other.extPrice != null)
-				return false;
-		} else if (!extPrice.equals(other.extPrice))
-			return false;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		if (item == null) {
-			if (other.item != null)
-				return false;
-		} else if (!item.equals(other.item))
-			return false;
-		if (quantity == null) {
-			if (other.quantity != null)
-				return false;
-		} else if (!quantity.equals(other.quantity))
-			return false;
-		return true;
-	}
-
-	public String getSku() {
-		return Sku;
-	}
-
-	public void setSku(String sku) {
-		Sku = sku;
 	}
 
 	public Integer getVendorId() {
@@ -99,5 +71,13 @@ public class OrderItem implements Serializable {
 
 	public void setVendorId(Integer vendorId) {
 		this.vendorId = vendorId;
+	}
+
+	public String getSku() {
+		return sku;
+	}
+
+	public void setSku(String sku) {
+		this.sku = sku;
 	}
 }

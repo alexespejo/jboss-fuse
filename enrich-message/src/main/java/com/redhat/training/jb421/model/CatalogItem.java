@@ -46,12 +46,13 @@ public class CatalogItem implements Serializable {
 	@JoinColumn(name = "pub_id")
 	@XmlTransient
 	private Publisher publisher;
-
+	
 	public CatalogItem() {
-
+		
 	}
 
-	public CatalogItem(String sku, String title, BigDecimal price, String description, String author, String imagePath,
+	public CatalogItem(String sku, String title, BigDecimal price,
+			String description, String author, String imagePath,
 			String category, Boolean newItem, Publisher publisher) {
 
 		this.sku = sku;
@@ -125,16 +126,20 @@ public class CatalogItem implements Serializable {
 		return id;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
 	public Boolean getNewItem() {
 		return newItem;
 	}
 
 	public void setNewItem(Boolean newItem) {
 		this.newItem = newItem;
+	}
+	
+	public Publisher getPublisher() {
+		return publisher;
+	}
+
+	public void setPublisher(Publisher publisher) {
+		this.publisher = publisher;
 	}
 
 	@Override

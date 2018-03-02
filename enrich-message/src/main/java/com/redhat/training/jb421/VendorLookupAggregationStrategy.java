@@ -23,7 +23,7 @@ public class VendorLookupAggregationStrategy implements AggregationStrategy {
 			for(HashMap<String, Object> row: dbResult){
 				int rowId = (int) row.get("id");
 				
-				if(rowId == item.getItem().getId()){
+				if(rowId == item.getCatalogItem().getId()){
 					item.setVendorId((Integer) row.get("vendor_id"));
 					item.setSku((String) row.get("sku"));
 				}
