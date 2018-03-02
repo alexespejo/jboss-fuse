@@ -7,8 +7,8 @@ import com.redhat.training.jb421.model.Order;
 
 public class AggregateRouteBuilder extends RouteBuilder {
 
-	public static String SRC_FOLDER = "/home/ihsan/Documents/jboss/aggregator-pattern/orders/incoming";
-	public static String OUTPUT_FOLDER = "/home/ihsan/Documents/jboss/aggregator-pattern/orders/outgoing";
+	public static String SRC_FOLDER = "/home/ihsan/Documents/jboss-fuse/aggregator-pattern/orders/incoming";
+	public static String OUTPUT_FOLDER = "/home/ihsan/Documents/jboss-fuse/aggregator-pattern/orders/outgoing";
 
 	BindyFixedLengthDataFormat bindy = new BindyFixedLengthDataFormat(Order.class);
 
