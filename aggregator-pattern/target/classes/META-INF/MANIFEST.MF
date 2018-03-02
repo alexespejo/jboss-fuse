@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-Bnd-LastModified: 1519957657042
+Bnd-LastModified: 1519984633186
 Build-Jdk: 1.8.0_131
 Built-By: ihsan
 Bundle-Blueprint: OSGI-INF/blueprint/blueprint.xml
@@ -19,7 +19,7 @@ Import-Package: com.redhat.training.jb421.model,javax.xml.bind,javax.xml
  uilder;version="[2.17,3)",org.apache.camel.dataformat.bindy.annotation;
  version="[2.17,3)",org.apache.camel.dataformat.bindy.fixed;version="[2.
  17,3)",org.apache.camel.model;version="[2.17,3)",org.apache.camel.proce
- ssor.aggregate;version="[2.17,3)",org.apache.camel.spi;version="[2.17,3
- )",org.osgi.service.blueprint;version="[1.0.0,2.0.0)"
+ ssor.aggregate;version="[2.17,3)",org.osgi.service.blueprint;version="[
+ 1.0.0,2.0.0)"
 Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.8))"
 Tool: Bnd-3.2.0.201605172007
