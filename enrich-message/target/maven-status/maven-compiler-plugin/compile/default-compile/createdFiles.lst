@@ -1,12 +1,12 @@
-com/redhat/training/jb421/model/Payment.class
 com/redhat/training/jb421/model/CatalogItem.class
+com/redhat/training/jb421/model/Payment.class
 com/redhat/training/jb421/model/Promotion.class
 com/redhat/training/jb421/VendorLookupAggregationStrategy.class
 com/redhat/training/jb421/model/UserToken.class
 com/redhat/training/jb421/model/Order.class
+com/redhat/training/jb421/model/Contact.class
 com/redhat/training/jb421/model/WishList.class
 com/redhat/training/jb421/model/Address.class
-com/redhat/training/jb421/model/Contact.class
 com/redhat/training/jb421/EnrichRouteBuilder.class
 com/redhat/training/jb421/model/PaymentType.class
 com/redhat/training/jb421/model/WishListItem.class

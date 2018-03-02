@@ -1,19 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0 https://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd                            http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
-
-	<bean class="com.redhat.training.jb421.EnrichRouteBuilder" id="enrichRouteBuilder" />
-	<bean id="dataSource"
-		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<property name="driverClassName" value="${jdbc.driverClassName}" />
-		<property name="url" value="${jdbc.url}" />
-		<property name="username" value="${jdbc.username}" />
-		<property name="password" value="${jdbc.password}" />
-	</bean>
-	<camelContext id="jb421Context"
-		xmlns="http://camel.apache.org/schema/blueprint">
-		<propertyPlaceholder location="jdbc.properties" />
-		<routeBuilder ref="enrichBuilder" />
-	</camelContext>
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0 https://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd                            http://camel.apache.org/schema/blueprint https://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
+    <bean class="com.redhat.training.jb421.EnrichRouteBuilder" id="enrichRouteBuilder"/>
+    <bean
+        class="org.springframework.jdbc.datasource.DriverManagerDataSource" id="dataSource">
+        <property name="driverClassName" value="${jdbc.driverClassName}"/>
+        <property name="url" value="${jdbc.url}"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+    </bean>
+    <camelContext id="jb421Context" xmlns="http://camel.apache.org/schema/blueprint">
+        <propertyPlaceholder location="jdbc.properties"/>
+        <routeBuilder ref="enrichBuilder"/>
+    </camelContext>
 </blueprint>
