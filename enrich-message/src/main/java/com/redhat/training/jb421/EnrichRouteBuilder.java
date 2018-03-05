@@ -26,6 +26,7 @@ public class EnrichRouteBuilder extends RouteBuilder {
 			.log("datanya : ${body}")
 			.unmarshal(xmlJsonDataFormat)
 			.log("${body}")
+			.to("file:///home/ihsan/Documents/jboss-fuse/enrich-message/orders/xml?fileName=output.xml")
 			.unmarshal(jaxbDataFormat)
 			.enrich("direct:vendorLookupJDBC", new VendorLookupAggregationStrategy());
 //			.to("file://" + OUTPUT_FOLDER + "?fileName=output${date:now:yyyy_MM_dd_hh_mm_ss}.xml");
