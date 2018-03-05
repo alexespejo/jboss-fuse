@@ -1,16 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0 https://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd                            http://camel.apache.org/schema/blueprint https://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
-    <bean
-        class="org.springframework.jdbc.datasource.DriverManagerDataSource" id="dataSource">
-        <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
-        <property name="url" value="${jdbc.url}"/>
-        <property name="username" value="${jdbc.username}"/>
-        <property name="password" value="${jdbc.password}"/>
-    </bean>
-    <bean class="com.redhat.training.jb421.EnrichRouteBuilder" id="enrichRouteBuilder"/>
-    <camelContext id="_Context1" xmlns="http://camel.apache.org/schema/blueprint">
-        <propertyPlaceholder location="jdbc.properties"/>
-        <routeBuilder ref="enrichRouteBuilder"/>
-    </camelContext>
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0 https://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd                            http://camel.apache.org/schema/blueprint https://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
+	<bean class="org.springframework.jdbc.datasource.DriverManagerDataSource"
+		id="mysqlDataSource">
+		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver" />
+		<property name="url"
+			value="jdbc:mysql://server.ihsanarif.com:3306/bookstore" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+	</bean>
+
+	<bean class="com.redhat.training.jb421.EnrichRouteBuilder" id="enrichRouteBuilder" />
+
+	<bean id="transactionTemplate"
+		class="org.springframework.transaction.support.TransactionTemplate">
+		<property name="transactionManager">
+			<bean class="org.springframework.orm.jpa.JpaTransactionManager">
+				<property name="entityManagerFactory" ref="entityManagerFactory" />
+			</bean>
+		</property>
+	</bean>
+	
+	<bean id="entityManagerFactory"
+		class="org.springframework.orm.jpa.LocalEntityManagerFactoryBean">
+		<property name="persistenceUnitName" value="mysql" />
+	</bean>
+
+	<!-- <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalEntityManagerFactoryBean"> 
+		<property name="persistenceUnitName" value="mysql" /> </bean> -->
+
+	<camelContext id="_Context1"
+		xmlns="http://camel.apache.org/schema/blueprint">
+		<propertyPlaceholder location="jdbc.properties" />
+
+		<routeBuilder ref="enrichRouteBuilder" />
+	</camelContext>
 </blueprint>

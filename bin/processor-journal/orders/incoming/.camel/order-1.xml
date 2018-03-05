@@ -1,0 +1,16 @@
+<journal>
+<timestamp>2018-02-21 11:51:56 +0700</timestamp>
+<fileName>order-1.xml</fileName>
+<order>
+	<orderId>1</orderId>
+<orderDate>2016-12-10T12:01:00-05:00</orderDate>
+	<orderItems>
+		<orderItem>
+			<orderItemId>1</orderItemId>
+			<orderItemQty>2</orderItemQty>
+			<orderItemPublisher>ABC Company</orderItemPublisher>
+			<orderItemPrc>10.59</orderItemPrc>
+		</orderItem>
+	</orderItems>
+</order>
+</journal>

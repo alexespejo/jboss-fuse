@@ -9,19 +9,27 @@ import org.slf4j.LoggerFactory;
 import com.redhat.training.jb421.model.Order;
 import com.redhat.training.jb421.model.OrderItem;
 
-
-public class VendorLookupProcessor implements Processor {
-
+/**
+ * Processor used to convert an incoming Order into a sql query to 
+ * be used by the jdbc module to find the sku and vendor_id for a CatalogItem with
+ * a given id.  The query once formed is set as the body on the Exchange.
+ *
+ */
+public class VendorLookupProcessor implements Processor{
+	
 	private Logger log = LoggerFactory.getLogger(this.getClass());
 
 	@Override
 	public void process(Exchange exchange) throws Exception {
+		//Reading the message
 		Message existing = exchange.getIn();
+		//Convert the body to an order.		
+		Order incomingOrder = existing.getBody(Order.class);
 		
-		Order incomingOrder = (Order) existing.getBody(Order.class);
-		
-		StringBuilder query = new StringBuilder("select sku,vendor_id,id from CatalogItem where id in (");
-		
+		//Build a SQL query to obtain the CatalogItems.
+		StringBuilder query = new StringBuilder("select sku,vendor_id,id "
+				+ "from CatalogItem where id in (");
+
 		for(OrderItem order: incomingOrder.getOrderItems()){
 			query.append(order.getCatalogItem().getId());
 			query.append(",");
@@ -30,7 +38,8 @@ public class VendorLookupProcessor implements Processor {
 		query.delete(query.lastIndexOf(","), query.length());
 		query.append(");");
 		
-		log.info("Query "+query.toString());
+		log.info("Query: "+ query.toString());
+		//append the output to the body.
 		existing.setBody(query.toString());
 	}
 

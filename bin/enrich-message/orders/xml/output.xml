@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<order>
+	<customer>
+		<admin>false</admin>
+		<billingAddress>
+			<city>Testville</city>
+			<country>USA</country>
+			<id>83</id>
+			<postalCode>22304</postalCode>
+			<state>MD</state>
+			<streetAddress1>123 Test St</streetAddress1>
+			<streetAddress2 />
+			<streetAddress3 />
+		</billingAddress>
+		<email>guest@doe.com</email>
+		<firstName>Guest</firstName>
+		<id>36</id>
+		<lastName>User</lastName>
+		<password>user</password>
+		<shippingAddress>
+			<city>Testville</city>
+			<country>USA</country>
+			<id>84</id>
+			<postalCode>22304</postalCode>
+			<state>MD</state>
+			<streetAddress1>123 Test St</streetAddress1>
+			<streetAddress2 />
+			<streetAddress3 />
+		</shippingAddress>
+		<username>guest</username>
+	</customer>
+	<delivered>false</delivered>
+	<discount>0.0</discount>
+	<orderDate>1480454850000</orderDate>
+	<orderItems>
+		<orderItem>
+			<catalogItem>
+				<author>Unknown</author>
+				<category>comics</category>
+				<description>expensive sucker</description>
+				<id>21</id>
+				<imagePath>/images/books/PoliceCases.jpg</imagePath>
+				<newItem>false</newItem>
+				<price>200.0</price>
+				<sku>45692</sku>
+				<title>Authentic Police Cases</title>
+			</catalogItem>
+			<extPrice>200.0</extPrice>
+			<quantity>1</quantity>
+		</orderItem>
+	</orderItems>
+	<payment>
+		<expireMonth>12</expireMonth>
+		<expireYear>19</expireYear>
+		<holderName>Tester</holderName>
+		<number>123456789</number>
+		<paymentType>EasyPay</paymentType>
+	</payment>
+	<promoCode />
+</order>
