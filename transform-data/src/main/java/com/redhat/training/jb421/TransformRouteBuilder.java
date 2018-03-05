@@ -29,6 +29,7 @@ public class TransformRouteBuilder extends RouteBuilder {
 						.setHeader("CatalogItemId", xpath("/reservation/catalogItemId/text()"))
 						.to("file:" + OUTPUT_FOLDER + "?fileName=${header.CatalogItemId}/"
 								+ "reservation-${date:now:yyyy-MM-dd_HH-mm-ss}.xml");
+		
 		// TODO add second route to update order in the database
 		from("direct:updateOrder").process(new DeliverOrderProcessor())
 				.to("jpa:com.redhat.training.jb421.model.Order?persistenceUnit=mysql");
