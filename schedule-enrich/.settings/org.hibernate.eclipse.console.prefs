@@ -1,0 +1,3 @@
+default.configuration=schedule-enrich
+eclipse.preferences.version=1
+hibernate3.enabled=true
