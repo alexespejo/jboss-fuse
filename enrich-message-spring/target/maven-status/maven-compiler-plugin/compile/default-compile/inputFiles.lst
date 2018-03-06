@@ -1,0 +1,17 @@
+/home/ihsan/Documents/jboss-fuse/enrich-message-spring/src/main/java/com/redhat/training/jb421/model/Payment.java
+/home/ihsan/Documents/jboss-fuse/enrich-message-spring/src/main/java/com/redhat/training/jb421/model/OrderItem.java
+/home/ihsan/Documents/jboss-fuse/enrich-message-spring/src/main/java/com/redhat/training/jb421/model/Contact.java
+/home/ihsan/Documents/jboss-fuse/enrich-message-spring/src/main/java/com/redhat/training/jb421/model/UserToken.java
+/home/ihsan/Documents/jboss-fuse/enrich-message-spring/src/main/java/com/redhat/training/jb421/model/CatalogItem.java
+/home/ihsan/Documents/jboss-fuse/enrich-message-spring/src/main/java/com/redhat/training/jb421/model/WishList.java
+/home/ihsan/Documents/jboss-fuse/enrich-message-spring/src/main/java/com/redhat/training/jb421/VendorLookupProcessor.java
+/home/ihsan/Documents/jboss-fuse/enrich-message-spring/src/main/java/com/redhat/training/jb421/EnrichRouteBuilder.java
+/home/ihsan/Documents/jboss-fuse/enrich-message-spring/src/main/java/com/redhat/training/jb421/model/PaymentType.java
+/home/ihsan/Documents/jboss-fuse/enrich-message-spring/src/main/java/com/redhat/training/jb421/VendorLookupAggregationStrategy.java
+/home/ihsan/Documents/jboss-fuse/enrich-message-spring/src/main/java/com/redhat/training/jb421/model/WishListItem.java
+/home/ihsan/Documents/jboss-fuse/enrich-message-spring/src/main/java/com/redhat/training/jb421/model/Order.java
+/home/ihsan/Documents/jboss-fuse/enrich-message-spring/src/main/java/com/redhat/training/jb421/model/Address.java
+/home/ihsan/Documents/jboss-fuse/enrich-message-spring/src/main/java/com/redhat/training/jb421/model/Promotion.java
+/home/ihsan/Documents/jboss-fuse/enrich-message-spring/src/main/java/com/redhat/training/jb421/model/Customer.java
+/home/ihsan/Documents/jboss-fuse/enrich-message-spring/src/main/java/com/redhat/training/jb421/model/Publisher.java
+/home/ihsan/Documents/jboss-fuse/enrich-message-spring/src/main/java/com/redhat/training/jb421/model/OrderBatch.java

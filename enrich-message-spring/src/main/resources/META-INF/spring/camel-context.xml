@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd        http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+	
+	<bean
+        class="org.springframework.jdbc.datasource.SimpleDriverDataSource" id="dataSource">
+        <property name="driverClass" value="oracle.jdbc.driver.OracleDriver"/>
+        <property name="url" value="jdbc:oracle:thin:@(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=localhost)(PORT=49161))(ADDRESS=(PROTOCOL=TCP)(HOST=localhost)(PORT=49161))(LOAD_BALANCE=yes)(FAILOVER=yes)(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=XE)))"/>
+        <property name="username" value="ihsan"/>
+        <property name="password" value="Rahman13@021092"/>
+    </bean>
+    
+	<bean class="org.springframework.transaction.support.TransactionTemplate"
+		id="transactionTemplate">
+		<property name="transactionManager">
+			<bean class="org.springframework.orm.jpa.JpaTransactionManager">
+				<property name="entityManagerFactory" ref="entityManagerFactory" />
+			</bean>
+		</property>
+	</bean>
+	
+	<bean class="org.springframework.orm.jpa.LocalEntityManagerFactoryBean"
+		id="entityManagerFactory">
+		<!-- use oracleTest as the persistence unit name defined in the persintence.xml 
+			file -->
+		<property name="persistenceUnitName" value="oracle" />
+	</bean>
+	
+	<bean class="com.redhat.training.jb421.EnrichRouteBuilder" id="enrichRouteBuilder" />
+	
+	<camelContext id="_camelContext1" xmlns="http://camel.apache.org/schema/spring">
+		<routeBuilder ref="enrichRouteBuilder" />
+	</camelContext>
+</beans>
