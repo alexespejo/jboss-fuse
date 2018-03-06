@@ -2,12 +2,16 @@ package com.redhat.training.jb421.model;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -19,7 +23,7 @@ public class Payment implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	@NotNull
-	private String number;
+	private String no;
 	@NotNull
 	private String expireMonth;
 	@NotNull
@@ -28,13 +32,29 @@ public class Payment implements Serializable {
 	private String holderName;
 	@Enumerated(EnumType.ORDINAL)
 	private PaymentType paymentType;
-
-	public String getNumber() {
-		return number;
+	@OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	@JoinColumn(name="order_id")
+	private Order order;
+	
+	public Order getOrder() {
+		return order;
 	}
 
-	public void setNumber(String number) {
-		this.number = number;
+	public void setOrder(Order order) {
+		this.order = order;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+
+	public String getNo() {
+		return no;
+	}
+
+	public void setNo(String no) {
+		this.no = no;
 	}
 
 	public String getExpireMonth() {

@@ -8,7 +8,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -21,7 +20,7 @@ public class Address implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@XmlAttribute
+	@XmlElement
 	private Integer id;
 	@XmlElement
 	private String streetAddress1;
@@ -37,9 +36,8 @@ public class Address implements Serializable {
 	private String postalCode;
 	@XmlElement
 	private String country;
-	
+
 	public Address() {
-		
 	}
 
 	public Address(String streetAddress1, String streetAddress2, String streetAddress3, String city, String state,
@@ -53,7 +51,15 @@ public class Address implements Serializable {
 		this.postalCode = postalCode;
 		this.country = country;
 	}
-	
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
 	public String getStreetAddress1() {
 		return streetAddress1;
 	}
@@ -110,7 +116,4 @@ public class Address implements Serializable {
 		this.country = country;
 	}
 
-	public Integer getId() {
-		return id;
-	}
 }

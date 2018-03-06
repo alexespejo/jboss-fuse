@@ -10,30 +10,33 @@
 		<property name="username" value="${jdbc.username}" />
 		<property name="password" value="${jdbc.password}" />
 	</bean>
-
 	<bean class="com.redhat.training.jb421.EnrichRouteBuilder" id="enrichRouteBuilder" />
-
-	<bean id="transactionTemplate"
-		class="org.springframework.transaction.support.TransactionTemplate">
+	<bean class="org.springframework.transaction.support.TransactionTemplate"
+		id="transactionTemplate">
 		<property name="transactionManager">
 			<bean class="org.springframework.orm.jpa.JpaTransactionManager">
 				<property name="entityManagerFactory" ref="entityManagerFactory" />
 			</bean>
 		</property>
 	</bean>
-	
-	<bean id="entityManagerFactory"
-		class="org.springframework.orm.jpa.LocalEntityManagerFactoryBean">
-		<property name="persistenceUnitName" value="mysql" />
-	</bean>
 
-	<!-- <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalEntityManagerFactoryBean"> 
-		<property name="persistenceUnitName" value="mysql" /> </bean> -->
+	<!-- <bean class="org.springframework.orm.jpa.LocalEntityManagerFactoryBean" 
+		id="entityManagerFactory"> <property name="persistenceUnitName" value="mysql"/> 
+		</bean> -->
+		
+	<bean class="org.apache.camel.component.jpa.JpaComponent" id="jpa"/>
+	
+	<bean
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
+		id="entityManagerFactory">
+		<property name="persistenceXmlLocation" value="classpath:./META-INF/persistence.xml" />
+		<property name="persistenceUnitName" value="mysql-localcontainer" />
+		<property name="dataSource" ref="mysqlDataSource" />
+	</bean>
 
 	<camelContext id="_Context1"
 		xmlns="http://camel.apache.org/schema/blueprint">
 		<propertyPlaceholder location="jdbc.properties" />
-
 		<routeBuilder ref="enrichRouteBuilder" />
 	</camelContext>
 </blueprint>

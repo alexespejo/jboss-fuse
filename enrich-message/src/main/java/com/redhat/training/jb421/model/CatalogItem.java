@@ -13,7 +13,6 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 @Entity
 @XmlRootElement(name = "catalogItem")
@@ -44,17 +43,16 @@ public class CatalogItem implements Serializable {
 	private Boolean newItem;
 	@ManyToOne
 	@JoinColumn(name = "pub_id")
-	@XmlTransient
+	@XmlElement
 	private Publisher publisher;
-	
+
 	public CatalogItem() {
-		
+
 	}
 
-	public CatalogItem(String sku, String title, BigDecimal price,
-			String description, String author, String imagePath,
+	public CatalogItem(String sku, String title, BigDecimal price, String description, String author, String imagePath,
 			String category, Boolean newItem, Publisher publisher) {
-
+		super();
 		this.sku = sku;
 		this.title = title;
 		this.price = price;
@@ -66,12 +64,20 @@ public class CatalogItem implements Serializable {
 		this.publisher = publisher;
 	}
 
-	public String getCategory() {
-		return category;
+	public Publisher getPublisher() {
+		return publisher;
 	}
 
-	public void setCategory(String category) {
-		this.category = category;
+	public void setPublisher(Publisher publisher) {
+		this.publisher = publisher;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public String getSku() {
@@ -122,8 +128,12 @@ public class CatalogItem implements Serializable {
 		this.imagePath = imagePath;
 	}
 
-	public Integer getId() {
-		return id;
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
 	}
 
 	public Boolean getNewItem() {
@@ -132,14 +142,6 @@ public class CatalogItem implements Serializable {
 
 	public void setNewItem(Boolean newItem) {
 		this.newItem = newItem;
-	}
-	
-	public Publisher getPublisher() {
-		return publisher;
-	}
-
-	public void setPublisher(Publisher publisher) {
-		this.publisher = publisher;
 	}
 
 	@Override
