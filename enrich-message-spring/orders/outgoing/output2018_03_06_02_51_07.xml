@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<order>
+    <id>0</id>
+    <orderDate>139783029-03-07T04:51:43.232+07:00</orderDate>
+    <discount>0.0</discount>
+    <delivered>false</delivered>
+    <customer>
+        <admin>false</admin>
+        <billingAddress>
+            <id>83</id>
+            <streetAddress1>123 Test St</streetAddress1>
+            <streetAddress2></streetAddress2>
+            <streetAddress3></streetAddress3>
+            <city>Testville</city>
+            <state>MD</state>
+            <postalCode>22304</postalCode>
+            <country>USA</country>
+        </billingAddress>
+        <email>guest@doe.com</email>
+        <firstName>Guest</firstName>
+        <lastName>User</lastName>
+        <password>user</password>
+        <shippingAddress>
+            <id>84</id>
+            <streetAddress1>123 Test St</streetAddress1>
+            <streetAddress2></streetAddress2>
+            <streetAddress3></streetAddress3>
+            <city>Testville</city>
+            <state>MD</state>
+            <postalCode>22304</postalCode>
+            <country>USA</country>
+        </shippingAddress>
+        <username>guest</username>
+    </customer>
+    <promoCode>
+        <valid>true</valid>
+    </promoCode>
+    <orderItems>
+        <orderItem>
+            <id>0</id>
+            <quantity>1</quantity>
+            <extPrice>200.0</extPrice>
+            <catalogItem>
+                <id>21</id>
+                <sku>45692</sku>
+                <title>Authentic Police Cases</title>
+                <price>200.0</price>
+                <description>expensive sucker</description>
+                <author>Unknown</author>
+                <imagePath>/images/books/PoliceCases.jpg</imagePath>
+                <category>comics</category>
+                <newItem>false</newItem>
+            </catalogItem>
+        </orderItem>
+    </orderItems>
+    <payment>
+        <expireMonth>12</expireMonth>
+        <expireYear>19</expireYear>
+        <holderName>Tester</holderName>
+        <id>0</id>
+        <paymentType>EasyPay</paymentType>
+    </payment>
+</order>

@@ -35,7 +35,7 @@ public class Order implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	private Date orderDate = new Date();
-	private Double discount;
+	private BigDecimal discount;
 	private Boolean delivered=false;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
@@ -96,11 +96,11 @@ public class Order implements Serializable {
 		this.payment = payment;
 	}
 
-	public Double getDiscount() {
+	public BigDecimal getDiscount() {
 		return discount;
 	}
 
-	public void setDiscount(Double discount) {
+	public void setDiscount(BigDecimal discount) {
 		this.discount = discount;
 	}
 
