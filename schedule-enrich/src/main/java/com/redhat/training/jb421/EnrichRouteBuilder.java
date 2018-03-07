@@ -1,7 +1,6 @@
 package com.redhat.training.jb421;
 
 import org.apache.camel.Exchange;
-import org.apache.camel.Processor;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.model.dataformat.JsonLibrary;
 
@@ -14,16 +13,17 @@ public class EnrichRouteBuilder extends RouteBuilder {
 				+ "&consumeLockEntity=false")
 		.log("${body}")
 		//.from("mock:start")
-		//.enrich("direct:enrichOrder")
+		.enrich("direct:enrichOrder")
 		.log("Order sent to fulfillemnt: ${body}")
 		.to("mock:fulfillmentSystem");
 		
-		//from("direct:enrichOrder").process((Processor) new OrderFulfillmentProcessor());//.wireTap("direct:updateOrder");
+		from("direct:enrichOrder").process(new OrderFulfillmentProcessor()).wireTap("direct:updateOrder");
 
-//		from("direct:updateOrder")
-//		  .onException(Exception.class).maximumRedeliveries(1).end()
-//		  .marshal().json(JsonLibrary.Jackson)
-//		  .setHeader(Exchange.CONTENT_TYPE,constant("application/json"))
+		from("direct:updateOrder")
+		  .onException(Exception.class).maximumRedeliveries(1).end()
+		  .marshal().json(JsonLibrary.Jackson)
+		  .setHeader(Exchange.CONTENT_TYPE,constant("application/json"))
+		  .log("${body}");
 //		  .to("http://localhost:8080/bookstore/rest/order/fulfillOrder/");
 	}
 
