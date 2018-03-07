@@ -19,7 +19,7 @@ public class Payment implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	@NotNull
-	private String number;
+	private String no;
 	@NotNull
 	private String expireMonth;
 	@NotNull
@@ -29,12 +29,12 @@ public class Payment implements Serializable {
 	@Enumerated(EnumType.ORDINAL)
 	private PaymentType paymentType;
 
-	public String getNumber() {
-		return number;
+	public String getNo() {
+		return no;
 	}
 
-	public void setNumber(String number) {
-		this.number = number;
+	public void setNo(String no) {
+		this.no = no;
 	}
 
 	public String getExpireMonth() {
@@ -81,7 +81,7 @@ public class Payment implements Serializable {
 		result = prime * result + ((expireYear == null) ? 0 : expireYear.hashCode());
 		result = prime * result + ((holderName == null) ? 0 : holderName.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((number == null) ? 0 : number.hashCode());
+		result = prime * result + ((no == null) ? 0 : no.hashCode());
 		result = prime * result + ((paymentType == null) ? 0 : paymentType.hashCode());
 		return result;
 	}
@@ -115,10 +115,10 @@ public class Payment implements Serializable {
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
-		if (number == null) {
-			if (other.number != null)
+		if (no == null) {
+			if (other.no != null)
 				return false;
-		} else if (!number.equals(other.number))
+		} else if (!no.equals(other.no))
 			return false;
 		if (paymentType != other.paymentType)
 			return false;
@@ -127,7 +127,7 @@ public class Payment implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Payment [id=" + id + ", number=" + number + ", expireMonth=" + expireMonth + ", expireYear="
+		return "Payment [id=" + id + ", no=" + no + ", expireMonth=" + expireMonth + ", expireYear="
 				+ expireYear + ", holderName=" + holderName + ", paymentType=" + paymentType + "]";
 	}
 	
