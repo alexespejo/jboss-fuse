@@ -2,10 +2,12 @@ package com.redhat.training.jb421.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+@Entity
 public class Promotion implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -21,18 +23,9 @@ public class Promotion implements Serializable {
 	}
 
 	public Promotion(String code, Integer percent, Boolean valid) {
-		super();
 		this.code = code;
 		this.percent = percent;
 		this.valid = valid;
-	}
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
 	}
 
 	public String getCode() {
@@ -59,6 +52,10 @@ public class Promotion implements Serializable {
 		this.valid = valid;
 	}
 
+	public Integer getId() {
+		return id;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -82,6 +79,11 @@ public class Promotion implements Serializable {
 		} else if (!code.equals(other.code))
 			return false;
 		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Promotion [id=" + id + ", code=" + code + ", percent=" + percent + ", valid=" + valid + "]";
 	}
 
 }

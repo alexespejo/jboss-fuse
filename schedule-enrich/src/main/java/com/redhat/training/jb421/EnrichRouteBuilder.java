@@ -9,21 +9,22 @@ public class EnrichRouteBuilder extends RouteBuilder {
 
 	@Override
 	public void configure() throws Exception {
-		from("jpa:com.redhat.training.jb421.model.Order?persistenceUnit=mysql" + "&consumeDelete=false"
+		from("jpa:com.redhat.training.jb421.model.Order?persistenceUnit=oracle" + "&consumeDelete=false"
 				+ "&consumer.namedQuery=getUndeliveredOrders" + "&maximumResults=1" + "&consumer.delay=30000"
 				+ "&consumeLockEntity=false")
-		.from("mock:start")
-		.enrich("direct:enrichOrder")
+		.log("${body}")
+		//.from("mock:start")
+		//.enrich("direct:enrichOrder")
 		.log("Order sent to fulfillemnt: ${body}")
 		.to("mock:fulfillmentSystem");
 		
-		from("direct:enrichOrder").process((Processor) new OrderFulfillmentProcessor()).wireTap("direct:updateOrder");
+		//from("direct:enrichOrder").process((Processor) new OrderFulfillmentProcessor());//.wireTap("direct:updateOrder");
 
-		from("direct:updateOrder")
-		  .onException(Exception.class).maximumRedeliveries(1).end()
-		  .marshal().json(JsonLibrary.Jackson)
-		  .setHeader(Exchange.CONTENT_TYPE,constant("application/json"))
-		  .to("http://localhost:8080/bookstore/rest/order/fulfillOrder/");
+//		from("direct:updateOrder")
+//		  .onException(Exception.class).maximumRedeliveries(1).end()
+//		  .marshal().json(JsonLibrary.Jackson)
+//		  .setHeader(Exchange.CONTENT_TYPE,constant("application/json"))
+//		  .to("http://localhost:8080/bookstore/rest/order/fulfillOrder/");
 	}
 
 }

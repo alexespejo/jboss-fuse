@@ -26,44 +26,44 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "order_")
-@NamedQuery(name = "getUndeliveredOrders", query = "select o from Order o where o.delivered = false")
+@NamedQuery(name="getUndeliveredOrders", query="select o from Order o where o.delivered = false")
 public class Order implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	private Date orderDate = new Date();
 	private BigDecimal discount;
-	private Boolean delivered = false;
-
+	private Boolean delivered=false;
+	
 	@JsonIgnore
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name = "cust_id")
 	private Customer customer;
-
+	
 	@JsonIgnore
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinColumn(name = "promo_id")
+	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+	@JoinColumn(name="promo_id")
 	private Set<Promotion> promoCode;
-
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	
+	@OneToMany(cascade = CascadeType.ALL,fetch=FetchType.EAGER)
 	@JoinColumn(name = "order_id")
-	@XmlElementWrapper(name = "orderItems")
-	@XmlElement(name = "orderItem")
+	@XmlElementWrapper(name="orderItems")
+	@XmlElement(name="orderItem")
 	@JsonIgnore
 	private Set<OrderItem> orderItems = new HashSet<OrderItem>();
-
+	
 	@JsonIgnore
-	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@OneToOne(cascade = CascadeType.ALL,fetch=FetchType.LAZY)
 	@JoinColumn(name = "payment_id")
 	private Payment payment;
-
+	
 	@JsonIgnore
 	@Transient
 	private Date dateFulfilled;
-
+	
 	@JsonIgnore
 	@Transient
 	private String fulfilledBy;

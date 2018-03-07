@@ -8,7 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAnyAttribute;
+import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -18,10 +18,10 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Address implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@XmlAnyAttribute
+	@XmlAttribute
 	private Integer id;
 	@XmlElement
 	private String streetAddress1;
@@ -38,11 +38,12 @@ public class Address implements Serializable {
 	@XmlElement
 	private String country;
 	
-	public Address(){
+	public Address() {
 		
 	}
-	
-	public Address(String streetAddress1, String streetAddress2, String streetAddress3, String city, String state, String postalCode, String country){
+
+	public Address(String streetAddress1, String streetAddress2, String streetAddress3, String city, String state,
+			String postalCode, String country) {
 		super();
 		this.streetAddress1 = streetAddress1;
 		this.streetAddress2 = streetAddress2;
@@ -52,7 +53,7 @@ public class Address implements Serializable {
 		this.postalCode = postalCode;
 		this.country = country;
 	}
-
+	
 	public String getStreetAddress1() {
 		return streetAddress1;
 	}
@@ -178,5 +179,12 @@ public class Address implements Serializable {
 		} else if (!streetAddress3.equals(other.streetAddress3))
 			return false;
 		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Address [id=" + id + ", streetAddress1=" + streetAddress1 + ", streetAddress2=" + streetAddress2
+				+ ", streetAddress3=" + streetAddress3 + ", city=" + city + ", state=" + state + ", postalCode="
+				+ postalCode + ", country=" + country + "]";
 	}
 }
