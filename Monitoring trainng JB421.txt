@@ -1,0 +1,38 @@
+Nama Project				Status Worked
+=======================================================
+enrich-data-spring			SUCCESS
+schedule-data				FAILED
+transform-data				INPROGRESS
+route-mock
+recipient-list
+invoke-beans
+
+demo develop-cdi
+lab dynamic-route-cdi setup
+demo bean-predicates setup 
+lab errors-mock setup
+lab route-javabeans setup
+demo rest-xml setup
+lab rest-json setup
+demo rest-restlet setup
+lab bookstore-restlet setup
+demo implement-rest-dsl setup
+lab rest-dsl setup
+lab rest-services setup
+demo osgi-dependencies setup
+lab osgi-bundles setup
+demo karaf-features setup
+lab camel-features setup
+demo openshift-karaf setup
+lab cluster-openshift setup
+lab camel-deploy setup (FAIL)
+demo transaction-exception setup
+demo explore-transaction setup
+lab test-transaction setup
+lab implement-transaction setup
+demo introduce-concurrency setup
+lab introduce-seda setup
+demo introduce-parallel setup
+lab throughput-files setup
+lab implement-parallel setup
+lab review1 setup
