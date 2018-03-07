@@ -11,7 +11,6 @@ public class DeliverOrderProcessor implements Processor {
 	public void process(Exchange exchange) throws Exception {
 		Order order = exchange.getIn().getBody(Order.class);
 		order.setDelivered(true);
-
 	}
 
 }
