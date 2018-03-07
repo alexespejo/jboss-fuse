@@ -10,6 +10,7 @@ com/redhat/training/jb421/model/WishList.class
 com/redhat/training/jb421/model/Address.class
 com/redhat/training/jb421/model/PaymentType.class
 com/redhat/training/jb421/model/WishListItem.class
+com/redhat/training/jb421/model/OrderBatch.class
 com/redhat/training/jb421/model/Customer.class
 com/redhat/training/jb421/model/Publisher.class
 com/redhat/training/jb421/model/OrderItem.class

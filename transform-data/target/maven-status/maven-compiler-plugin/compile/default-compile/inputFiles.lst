@@ -2,6 +2,7 @@
 /home/ihsan/Documents/jboss-fuse/transform-data/src/main/java/com/redhat/training/jb421/DeliverOrderProcessor.java
 /home/ihsan/Documents/jboss-fuse/transform-data/src/main/java/com/redhat/training/jb421/model/Publisher.java
 /home/ihsan/Documents/jboss-fuse/transform-data/src/main/java/com/redhat/training/jb421/model/OrderItem.java
+/home/ihsan/Documents/jboss-fuse/transform-data/src/main/java/com/redhat/training/jb421/model/OrderBatch.java
 /home/ihsan/Documents/jboss-fuse/transform-data/src/main/java/com/redhat/training/jb421/TransformRouteBuilder.java
 /home/ihsan/Documents/jboss-fuse/transform-data/src/main/java/com/redhat/training/jb421/model/Customer.java
 /home/ihsan/Documents/jboss-fuse/transform-data/src/main/java/com/redhat/training/jb421/model/Contact.java

@@ -1,3 +1,26 @@
 Manifest-Version: 1.0
-Class-Path: 
-
+Bnd-LastModified: 1520418110056
+Build-Jdk: 1.8.0_131
+Built-By: ihsan
+Bundle-Blueprint: OSGI-INF/blueprint/blueprint.xml
+Bundle-Description: Empty Camel Blueprint Example
+Bundle-License: http://www.apache.org/licenses/LICENSE-2.0.html
+Bundle-ManifestVersion: 2
+Bundle-Name: Empty Camel Blueprint Example [transform-data]
+Bundle-SymbolicName: transform-data
+Bundle-Version: 1.0.0.SNAPSHOT
+Created-By: Apache Maven Bundle Plugin
+Export-Package: com.redhat.training.jb421;uses:="org.apache.camel,org.ap
+ ache.camel.builder,org.apache.camel.processor.aggregate";version="1.0.0
+ ",com.redhat.training.jb421.model;uses:="javax.persistence,javax.xml.bi
+ nd.annotation";version="1.0.0"
+Import-Package: com.redhat.training.jb421.model,javax.persistence;versio
+ n="[2.1,3)",javax.validation.constraints;version="[1.1,2)",javax.xml.bi
+ nd.annotation,org.apache.camel;version="[2.17,3)",org.apache.camel.buil
+ der;version="[2.17,3)",org.apache.camel.component.jpa;version="[2.17,3)
+ ",org.apache.camel.model;version="[2.17,3)",org.apache.camel.processor.
+ aggregate;version="[2.17,3)",org.hibernate.validator.constraints;versio
+ n="[5.0,6)",org.osgi.service.blueprint;version="[1.0.0,2.0.0)",org.spri
+ ngframework.jdbc.datasource,oracle.jdbc.driver
+Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.8))"
+Tool: Bnd-3.2.0.201605172007
