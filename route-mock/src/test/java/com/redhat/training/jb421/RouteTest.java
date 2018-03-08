@@ -2,6 +2,7 @@ package com.redhat.training.jb421;
 
 import java.util.concurrent.TimeUnit;
 
+import org.apache.camel.Endpoint;
 import org.apache.camel.EndpointInject;
 import org.apache.camel.Produce;
 import org.apache.camel.ProducerTemplate;
@@ -11,6 +12,7 @@ import org.apache.camel.test.blueprint.CamelBlueprintTestSupport;
 import org.junit.Test;
 
 import com.redhat.training.jb421.model.Order;
+import com.redhat.training.jb421.predicates.Predicates;
 
 public class RouteTest extends CamelBlueprintTestSupport {
 	@Override
@@ -28,11 +30,19 @@ public class RouteTest extends CamelBlueprintTestSupport {
 	public void testRouteHeader() throws Exception {
 		// Evaluate if the second route does not process a null body and header
 		// named test with a null string
+		//from builder
 		resultHeaderMockEndpoint.setExpectedMessageCount(0);
 		NotifyBuilder builder = new NotifyBuilder(context).fromRoute("orderHeader").whenDone(1).create();
 		ordersHeaderProducerTemplate.sendBodyAndHeader(null, "test", null);
 		builder.matches(2, TimeUnit.SECONDS);
 		resultHeaderMockEndpoint.assertIsSatisfied();
+		
+		// from dsl
+//		getMockEndpoint("mock:secondRoute").setMinimumExpectedMessageCount(0);
+//		Endpoint endpoint = context.getEndpoint("direct:orderHeader");
+//		template.setDefaultEndpoint(endpoint);
+//		template.sendBodyAndHeader(null, "test", "input");
+//		assertMockEndpointsSatisfied(2, TimeUnit.SECONDS);
 	}
 
 	@Test
