@@ -1,0 +1,6 @@
+#surefire_0
+#Fri Mar 09 16:19:12 WIB 2018
+user.dir=/home/ihsan/Documents/jboss-fuse/invoke-beans
+TestSkip=true
+localRepository=/home/ihsan/.m2/repository
+basedir=/home/ihsan/Documents/jboss-fuse/invoke-beans

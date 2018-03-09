@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: com.redhat.training.jb421.RouteTransformTest
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 15.122 s <<< FAILURE! - in com.redhat.training.jb421.RouteTransformTest
+testRouteRecipientList(com.redhat.training.jb421.RouteTransformTest)  Time elapsed: 3.347 s  <<< FAILURE!
+java.lang.AssertionError: mock://ftp:infrastructure Body of message: 0. Expected: <John Doe`11/10/16`123 Easy St`Anytown`AS`?at?her in the Rye`1`14.00> but was: <John Doe`11/10/16`123 Easy St`Anytown`AS`Çatßher in the Rye`1`14.00>
+	at com.redhat.training.jb421.RouteTransformTest.testRouteRecipientList(RouteTransformTest.java:119)
+
