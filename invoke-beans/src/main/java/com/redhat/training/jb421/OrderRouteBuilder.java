@@ -17,7 +17,8 @@ public class OrderRouteBuilder extends RouteBuilder {
 
 		from("direct:transformChars")
 			.routeId("transformChars")
-			.to("bean://bodyTransformBean?" + "method=replaceNonASCIIWithQuestionMark")
+			//.to("bean://bodyTransformBean?method=replaceNonASCIIWithQuestionMark")
+			.bean(BodyTransformBean.class,"replaceNonASCIIWithQuestionMark")
 			.to("direct:recipientList");
 
 		from("direct:recipientList").routeId("recipientList").split(body().convertToString().tokenize("\n"))

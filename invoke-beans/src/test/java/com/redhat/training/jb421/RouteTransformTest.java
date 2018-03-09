@@ -73,7 +73,12 @@ public class RouteTransformTest extends CamelBlueprintTestSupport {
 	@Test
 	public void testRouteFileChars() throws Exception {
 		ModelCamelContext modelCamelContext = context.adapt(ModelCamelContext.class);
+		
+		NotifyBuilder builder = new NotifyBuilder(context).whenDone(1).create();
 
+		charsEndpoint.expectedMessageCount(1);
+		charsEndpoint.expectedBodiesReceived(CSV_ORDER_2_CHARS);
+		
 		modelCamelContext.getRouteDefinition("transformChars").adviceWith(modelCamelContext,
 				new AdviceWithRouteBuilder() {
 
@@ -83,11 +88,6 @@ public class RouteTransformTest extends CamelBlueprintTestSupport {
 								.to("mock:direct:recipientList");
 					}
 				});
-
-		NotifyBuilder builder = new NotifyBuilder(context).whenDone(1).create();
-
-		charsEndpoint.expectedMessageCount(1);
-		charsEndpoint.expectedBodiesReceived(CSV_ORDER_2_CHARS);
 
 		context.start();
 
