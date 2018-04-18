@@ -17,18 +17,18 @@ public class OrderRouteBuilder extends RouteBuilder{
 		from("direct:createOrder")
 			.log("Creating new order with id ${header.id}")
 			.setHeader("orderDate").groovy("new Date()")
-			.to("sql:insert into bookstore.order_ (id, orderDate) values (:#id, :#orderDate)?dataSource=oracleDataSource");
+			.to("sql:insert into order_ (id, orderDate) values (:#id, :#orderDate)?dataSource=oracleDataSource");
 
 		from("direct:updateOrder")
 			.log("Updating order with id ${header.id} to add order item ${body}")
 			.bean(new XPathOrderItemProcessor())
-			.to("sql:insert into bookstore.OrderItem (id, order_id, quantity, extPrice) values "
+			.to("sql:insert into OrderItem (id, order_id, quantity, extPrice) values "
 					+ "(:#id, :#orderId, :#quantity, :#extPrice)?dataSource=oracleDataSource");
 		
 		from("direct:cancelOrder")
 			.log("Canceling order with id ${header.id}")
-			.to("sql:delete from bookstore.OrderItem where order_id = (#)?dataSource=oracleDataSource")
-			.to("sql:delete from bookstore.order_ where id = (#)?dataSource=oracleDataSource");
+			.to("sql:delete from OrderItem where order_id = (#)?dataSource=oracleDataSource")
+			.to("sql:delete from order_ where id = (#)?dataSource=oracleDataSource");
 	}
 
 }
